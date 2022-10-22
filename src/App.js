@@ -35,6 +35,7 @@ function App() {
                         <Route element={<ProtectedRoute/>}>
                             <Route path='/' element={<Home/>}/>
                             <Route path='/home' element={<Home/>}/>
+                            <Route path='/PaymentSystem' element={<Home/>}/>
                             <Route path='/completed' element={<Completed/>}/>
                             <Route path='/users' element={<Users/>}/>
                             <Route path='/followers' element={<Followers/>}/>

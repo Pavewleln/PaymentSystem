@@ -57,7 +57,7 @@ export const createHistory = (myCardId, myMoney, recipientCardId, recipientMoney
                     shortName: "BTN",
                     status: 'completed',
                     numberCardSender: myCardNumber.join(''),
-                    numberCardRecipient: recipientCardNumber
+                    numberCardRecipient: recipientCardNumber.toString()
                 },
                 {
                     _id: nanoid(),
@@ -68,7 +68,7 @@ export const createHistory = (myCardId, myMoney, recipientCardId, recipientMoney
                     shortName: "BTN",
                     status: 'completed',
                     numberCardSender: myCardNumber.join(''),
-                    numberCardRecipient: recipientCardNumber
+                    numberCardRecipient: recipientCardNumber.toString()
                 })
         );
     } catch (error) {

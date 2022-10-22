@@ -76,10 +76,8 @@ export const Users = () => {
                     <table className="table table-hover bg-white rounded-4">
                         <thead>
                         <tr className={"bg-light"}>
-                            <th scope="col"></th>
                             <th scope="col" className={"text-center"}>Имя</th>
                             <th scope="col" className={"text-center"}>Всего переводов</th>
-                            <th scope="col" className={"text-center"}>Всего завершенных</th>
                             <th scope="col" className={"text-center"}>Место жительства</th>
                             <th scope="col"></th>
                         </tr>

@@ -30,6 +30,7 @@ export const MyExpensesAndIncome = () => {
         }
 
         const historyPaysForAllLife = historyArr.map(p => p && Number(p.pay))
+        if(!historyPaysForAllLife || historyPaysForAllLife.length === 0) return "У вас нет ни одного перевода"
         // console.log(historyPaysForAllLife)
         // Вся сумма за всю жизнь
         const historyPaysSumPositiveForAllLife = (historyPaysForAllLife.map((p) => p > 0 ? p : 0))?.reduce((a, b) => a + b)
@@ -52,15 +53,6 @@ export const MyExpensesAndIncome = () => {
         const historyPaysSumNegativeForSevenDays = (historyPaysForSevenDays.map((p) => p < 0 ? p : 0))?.reduce((a, b) => a + b)
         // console.log("За 7 дней", historyPaysSumPositiveForOneDay, historyPaysSumNegativeForOneDay)
 
-        // Вся сумма за месяц
-        const historyForMonth = historyArr.map((h) => h.datetime > newMonthDate ? h : 0)
-        const historyPaysForMonth = historyForMonth.map(p => p ? Number(p.pay) : 0)
-        // console.log(historyForSevenDays)
-        const historyPaysSumPositiveForMonth = (historyPaysForMonth.map((p) => p > 0 ? p : 0))?.reduce((a, b) => a + b)
-        const historyPaysSumNegativeForMonth = (historyPaysForMonth.map((p) => p < 0 ? p : 0))?.reduce((a, b) => a + b)
-        // console.log("За месяц", historyPaysSumPositiveForMonth, historyPaysSumNegativeForMonth)
-
-
         // Вся сумма на определенной карте
         const historyPaysSumPositiveInMyCard = (id) => (history.map((h) => h.cardId === id ? Number(h.pay) : 0)).map((p) => p > 0 ? p : 0)?.reduce((a, b) => a + b)
         const historyPaysSumNegativeInMyCard = (id) => (history.map((h) => h.cardId === id ? Number(h.pay) : 0)).map((p) => p < 0 ? p : 0)?.reduce((a, b) => a + b)
@@ -73,10 +65,6 @@ export const MyExpensesAndIncome = () => {
         const historyPaysSumPositiveInMyCardForSevenDays = (id) => ((history.map((h) => h.datetime > newDate ? h : 0).map((h) => h.cardId === id ? Number(h.pay) : 0)).map((p) => p > 0 ? p : 0)?.reduce((a, b) => a + b))
         const historyPaysSumNegativeInMyCardForSevenDays = (id) => ((history.map((h) => h.datetime > newDate ? h : 0).map((h) => h.cardId === id ? Number(h.pay) : 0)).map((p) => p < 0 ? p : 0)?.reduce((a, b) => a + b))
 
-        // Вся сумма за месяц на определенной карте
-        const historyPaysSumPositiveInMyCardForMonth = (id) => ((history.map((h) => h.datetime > newMonthDate ? h : 0).map((h) => h.cardId === id ? Number(h.pay) : 0)).map((p) => p > 0 ? p : 0)?.reduce((a, b) => a + b))
-        const historyPaysSumNegativeInMyCardForMonth = (id) => ((history.map((h) => h.datetime > newMonthDate ? h : 0).map((h) => h.cardId === id ? Number(h.pay) : 0)).map((p) => p < 0 ? p : 0)?.reduce((a, b) => a + b))
-
         return (
             <div>
                 <div className={"w-75 m-auto"}>
@@ -88,17 +76,6 @@ export const MyExpensesAndIncome = () => {
                         <div className={"m-2 fs-3 d-flex flex-column align-items-center"}>
                             <p>Всего потрачено:</p>
                             <p className={"text-info"}>{historyPaysSumNegativeForAllLife}</p>
-                        </div>
-                    </div>
-                    <hr/>
-                    <div className={"d-flex justify-content-between"}>
-                        <div className={"m-2 fs-3 d-flex flex-column align-items-center"}>
-                            <p>Получено за месяц:</p>
-                            <p className={"text-info"}>{historyPaysSumPositiveForMonth}</p>
-                        </div>
-                        <div className={"m-2 fs-3 d-flex flex-column align-items-center"}>
-                            <p>Потрачено за месяц:</p>
-                            <p className={"text-info"}>{historyPaysSumNegativeForMonth}</p>
                         </div>
                     </div>
                     <hr/>
@@ -135,13 +112,6 @@ export const MyExpensesAndIncome = () => {
                             <div className={"m-2"}>
                                 <p>Всего потрачено: <span
                                     className={"text-info"}>{historyPaysSumNegativeInMyCard(c._id)}</span></p>
-                            </div>
-                            <hr/>
-                            <div className={"m-2"}>
-                                <p>Всего получено за месяц: <span className={"text-info"}>{historyPaysSumPositiveInMyCardForMonth(c._id)}</span></p>
-                            </div>
-                            <div className={"m-2"}>
-                                <p>Всего потрачено за месяц: <span className={"text-info"}>{historyPaysSumNegativeInMyCardForMonth(c._id)}</span></p>
                             </div>
                             <hr/>
                             <div className={"m-2"}>

@@ -97,7 +97,7 @@ export const createNewCard = (data, authorName) => async (dispatch, getState) =>
     const dateCreated = (new Date().toLocaleString().split(",").slice(0, 1).join(' ')).split('.').slice(0, 2).join('/')
     const newCard = {
         _id: nanoid(),
-        amountOfMoney: 0,
+        amountOfMoney: 500,
         authorName: authorName,
         bank: data.bank,
         created_at: Date.now(),

@@ -23,12 +23,12 @@ export const Followers = () => {
     const handleSearchQuery = ({target}) => {
         setSearchQuery(target.value);
     };
-    if (currentUserData) {
+    if (currentUserData && currentUserData.followers) {
         const followers = Object.values(currentUserData.followers)
         const usersArr = [];
         for (const user of allUsersSystem) {
             for (const follower of followers) {
-                if (user._id === follower) {
+                if (user._id === follower.follower) {
                     usersArr.push(user);
                     break;
                 }
@@ -88,7 +88,6 @@ export const Followers = () => {
                     <table className="table table-hover bg-white rounded-4">
                         <thead>
                         <tr className={"bg-light"}>
-                            <th scope="col"></th>
                             <th scope="col" className={"text-center"}>Имя</th>
                             <th scope="col" className={"text-center"}>Всего переводов</th>
                             <th scope="col" className={"text-center"}>Всего завершенных</th>
@@ -112,6 +111,12 @@ export const Followers = () => {
                         />
                     </div>
                 </div>
+            </div>
+        )
+    } else {
+        return (
+            <div>
+                В данный момент у вас нет друзей
             </div>
         )
     }

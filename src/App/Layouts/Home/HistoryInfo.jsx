@@ -18,7 +18,8 @@ export const HistoryInfo = ({historyCardForId}) => {
             )
         }
         const sortedHistory = handleSort()
-        return sortedHistory.length !== 0 ? (<div className={"overflow-auto"} style={{height: '300px'}}>
+        return sortedHistory.length !== 0 ? (
+            <div className={"overflow-auto"} style={{height: '300px'}}>
                 {sortedHistory.map((h) => (
                     <div key={h._id} className="d-flex justify-content-between align-items-center m-2">
                         <img

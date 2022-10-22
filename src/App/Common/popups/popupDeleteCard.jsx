@@ -2,13 +2,18 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import React from "react";
 import {removeCard} from "../../Store/myCreaditCard";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router";
+import {deletedCreditCardNotice} from "../../Store/notice";
+import {getCurrentUserId} from "../../Store/users";
 export const PopupDeleteCard = ({warning, cardData}) => {
+    const currentUserId = useSelector(getCurrentUserId())
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const date = new Date().toLocaleString().split(",").slice(0, 1).join(' ')
     const deleteCard = (card) => {
         dispatch(removeCard(card))
+        dispatch(deletedCreditCardNotice(currentUserId, date, cardData.numberCard))
         navigate("/completed")
     }
     return (

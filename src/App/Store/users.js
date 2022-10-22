@@ -1,18 +1,45 @@
-import { createAction, createSlice } from "@reduxjs/toolkit";
+import {createAction, createSlice} from "@reduxjs/toolkit";
 import {localStorageService} from "../Services/localStorage.service";
 import {authService} from "../Services/auth.service";
 import {GenerateAuthError} from "../Utils/generateAuthError";
 import {UserService} from "../Services/user.service";
+import {nanoid} from "nanoid";
 
 const initialState = localStorageService.getAccessToken() ? {
-    entities: null,
+    entities: {
+        _id: null,
+        dateOfBirth: null,
+        description: null,
+        email: null,
+        followers: null,
+        image: null,
+        password: null,
+        sex: null,
+        telephone: null,
+        license: false,
+        location: null,
+        name: null
+    },
     isLoading: true,
     error: null,
-    auth: { userId: localStorageService.getUserId() },
+    auth: {userId: localStorageService.getUserId()},
     isLoggedIn: true,
     dataLoaded: false
 } : {
-    entities: null,
+    entities: {
+        _id: null,
+        dateOfBirth: null,
+        description: null,
+        email: null,
+        followers: null,
+        image: null,
+        password: null,
+        sex: null,
+        telephone: null,
+        license: false,
+        location: null,
+        name: null
+    },
     isLoading: false,
     error: null,
     auth: null,
@@ -60,11 +87,17 @@ const usersSlice = createSlice({
         },
         authRequested: (state) => {
             state.error = null;
+        },
+        followSuccess: (state, action) => {
+            state.entities[state.entities.findIndex(u => u._id === state.auth.userId)] = action.payload;
+        },
+        unfollowSuccess: (state, action) => {
+            state.entities[state.entities.findIndex(u => u._id === state.auth.userId)] = action.payload;
         }
     }
 });
 
-const { reducer: usersReducer, actions } = usersSlice;
+const {reducer: usersReducer, actions} = usersSlice;
 const {
     usersRequested,
     usersReceived,
@@ -73,24 +106,31 @@ const {
     authRequestFailed,
     userCreated,
     userLogOut,
-    updateUserSuccess
+    updateUserSuccess,
+    followSuccess,
+    unfollowSuccess
 } = actions;
 
 export const authRequested = createAction("users/authRequested");
 const createUserRequested = createAction("users/createUserRequested");
 const updateUserRequested = createAction("users/updateUserRequested");
+const followRequested = createAction("users/followRequested");
+const unfollowRequested = createAction("users/unfollowRequested");
+
 const createUserFailed = createAction("users/createUserFailed");
 const updateUserFailed = createAction("users/updateUserFailed");
+const followRequestFailed = createAction("users/followRequestFailed");
+const unfollowRequestFailed = createAction("users/unfollowRequestFailed");
 
 export const login = (payload) => async (dispatch) => {
-    const { email, password } = payload;
+    const {email, password} = payload;
     dispatch(authRequested());
     try {
-        const data = await authService.login({ email, password });
+        const data = await authService.login({email, password});
         localStorageService.setTokens(data);
-        dispatch(authRequestSuccess({ userId: data.localId }));
+        dispatch(authRequestSuccess({userId: data.localId}));
     } catch (error) {
-        const { code, message } = error.response.data.error;
+        const {code, message} = error.response.data.error;
         if (code === 400) {
             const errorMessage = GenerateAuthError(message);
             dispatch(authRequestFailed(errorMessage));
@@ -99,12 +139,12 @@ export const login = (payload) => async (dispatch) => {
         }
     }
 };
-export const signUp = ({ email, password, ...rest }) => async (dispatch) => {
+export const signUp = ({email, password, ...rest}) => async (dispatch) => {
     dispatch(authRequested());
     try {
-        const data = await authService.register({ email, password });
+        const data = await authService.register({email, password});
         localStorageService.setTokens(data);
-        dispatch(authRequestSuccess({ userId: data.localId }));
+        dispatch(authRequestSuccess({userId: data.localId}));
         dispatch(
             createUser({
                 _id: data.localId,
@@ -130,44 +170,56 @@ export const logOut = () => (dispatch) => {
 export const updateUserData = (payload) => async (dispatch) => {
     dispatch(updateUserRequested());
     try {
-        const { content } = await UserService.updateUserData(payload);
+        const {content} = await UserService.updateUserData(payload);
         dispatch(updateUserSuccess(content));
     } catch (error) {
         dispatch(updateUserFailed(error.message));
     }
 };
+
 function createUser(payload) {
     return async function (dispatch) {
         dispatch(createUserRequested());
         try {
-            const { content } = await UserService.create(payload);
+            const {content} = await UserService.create(payload);
             dispatch(userCreated(content));
         } catch (error) {
             dispatch(createUserFailed(error.message));
         }
     };
 }
+
 export const loadUsersList = () => async (dispatch) => {
     dispatch(usersRequested());
     try {
-        const { content } = await UserService.get();
+        const {content} = await UserService.get();
         dispatch(usersReceived(content));
     } catch (error) {
         dispatch(usersRequestFailed(error.message));
-    };
+    }
 };
 export const follow = (id) => async (dispatch) => {
-    try{
-        await UserService.follow(JSON.stringify(id))
+    dispatch(followRequested())
+    const newData = {
+        _id: nanoid(),
+        follower: id
+    }
+    try {
+        await UserService.follow(newData);
+        const {content} = await UserService.getCurrentUser();
+        dispatch(followSuccess(content));
     } catch (error) {
-
+        dispatch(followRequestFailed(error.message));
     }
 }
 export const unfollow = (id) => async (dispatch) => {
-    try{
-        await UserService.unfollow(JSON.stringify(id))
+    dispatch(unfollowRequested())
+    try {
+        await UserService.unfollow(id)
+        const {content} = await UserService.getCurrentUser();
+        dispatch(unfollowSuccess(content));
     } catch (error) {
-
+        dispatch(unfollowRequestFailed(error.message))
     }
 }
 

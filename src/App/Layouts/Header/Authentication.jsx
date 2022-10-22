@@ -11,7 +11,6 @@ export const Authentication = () => {
     const currentUser = useSelector(getCurrentUserData());
     const notice = useSelector(getNotice())
     const currentUserId = useSelector(getCurrentUserId())
-    const firstName = currentUser.name.split(' ').slice(0, 1).join(" ")
     const date = new Date().toLocaleString().split(",").slice(0, 1).join(' ')
     const creditCardsList = useSelector(getCreditCardsList())
     const dispatch = useDispatch();
@@ -19,6 +18,7 @@ export const Authentication = () => {
         dispatch(loadNoticeList());
     }, [creditCardsList]);
     if (currentUser && notice) {
+        const firstName = currentUser.name.split(' ').slice(0, 1).join(" ")
         const myNotice = notice.filter((n) => n !== undefined && n.userId === currentUserId)
         return (
             <div className="d-flex justify-content-between align-items-center p-3 w-100">
@@ -55,16 +55,14 @@ export const Authentication = () => {
         return (
             <div className="d-flex justify-content-between align-items-center p-3 w-100">
                 <div>
-                    <h4>Здравствуйте {firstName}</h4>
+                    <h4>Здравствуйте</h4>
                     <p style={{fontSize: '14px'}}>Сегодня {date}</p>
                 </div>
                 <div className={"d-flex"}>
                     <div className={"d-flex align-items-center"}>
-                        <h6 style={{marginRight: '10px'}}>{firstName}</h6>
+                        <h6 style={{marginRight: '10px'}}></h6>
                         <Link to={"/profile"} className={"rounded-3 overflow-hidden"}
                               style={{width: '50px', height: '50px'}}>
-                            <img style={{width: '100%', height: '100%'}}
-                                 src={currentUser.image ? currentUser.image : profile}/>
                         </Link>
                     </div>
                 </div>

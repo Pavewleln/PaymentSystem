@@ -36,8 +36,13 @@ const {noticeRequested, noticeReceived, noticeRequestFailed, noticeCreated, dele
 
 const createNoticeRequested = createAction("notice/createNoticeRequested")
 const deleteNoticeRequested = createAction("notice/deleteNoticeRequested")
+const deletedCreditCardNoticeRequested = createAction("notice/deletedCreditCardNoticeRequested")
+const updateUserDataRequested = createAction("notice/updateUserDataRequested")
+
 const createNoticeFailed = createAction("notice/createNoticeFailed")
 const deleteNoticeRequestFailed = createAction("notice/deleteNoticeRequestFailed")
+const deletedCreditCardNoticeRequestFailed = createAction("notice/deletedCreditCardNoticeRequestFailed")
+const updateUserDataRequestFailed = createAction("notice/updateUserDataRequestFailed")
 
 export const loadNoticeList = () => async (dispatch) => {
     dispatch(noticeRequested())
@@ -73,7 +78,6 @@ function createDataNotice(myPayload, recipientPayload) {
         dispatch(createNoticeRequested());
         try {
             const {myContent} = await noticeService.myNotice(myPayload);
-            console.log(myContent)
             dispatch(noticeCreated(myContent));
             const {recipientContent} = await noticeService.myNotice(recipientPayload);
             dispatch(noticeCreated(recipientContent));
@@ -81,6 +85,21 @@ function createDataNotice(myPayload, recipientPayload) {
             dispatch(createNoticeFailed(error.message));
         }
     };
+}
+export const deletedCreditCardNotice = (myUserId, datetime, myCardNumber)  => async (dispatch) => {
+    dispatch(deletedCreditCardNoticeRequested())
+    const newDate = {
+        _id: nanoid(),
+        userId: myUserId,
+        datetime: datetime,
+        text: `Карта ${myCardNumber} была удалена с вашего аккаунта`
+    }
+    try{
+        const {content} = await noticeService.myNotice(newDate)
+        dispatch(noticeCreated(content));
+    } catch (error) {
+        dispatch(deletedCreditCardNoticeRequestFailed(error.message))
+    }
 }
 
 export const deleteDataNotice = (noticeId) => async (dispatch) => {
@@ -92,6 +111,21 @@ export const deleteDataNotice = (noticeId) => async (dispatch) => {
         }
     } catch (error) {
         dispatch(deleteNoticeRequestFailed(error.message))
+    }
+}
+export const updateUserDataNotice = (myUserId, datetime) => async (dispatch) => {
+    dispatch(updateUserDataRequested())
+    const newDate = {
+        _id: nanoid(),
+        userId: myUserId,
+        datetime: datetime,
+        text: `Данные вашего аккаунта были изменены`
+    }
+    try {
+        const {content} = await noticeService.myNotice(newDate)
+        dispatch(noticeCreated(content))
+    } catch (error) {
+        dispatch(updateUserDataRequestFailed(error.message))
     }
 }
 export const getNotice = () => (state) => state.notice.entities

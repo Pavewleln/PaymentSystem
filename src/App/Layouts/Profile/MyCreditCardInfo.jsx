@@ -1,12 +1,11 @@
 import {useNavigate, useParams} from "react-router";
-import {useDispatch, useSelector} from "react-redux";
-import {getCardBankNameByIds, removeCard} from "../../Store/myCreaditCard";
+import {useSelector} from "react-redux";
+import {getCardBankNameByIds} from "../../Store/myCreaditCard";
 import card from "../../../img/credit-card.png";
 import React, {useState} from "react";
 import {Button} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import {PopupDeleteCard} from "../../Common/popups/popupDeleteCard";
-import Modal from "react-bootstrap/Modal";
 import {AddMoneyPopup} from "../../Common/popups/addMoneyPopup";
 
 export const MyCreditCardInfo = () => {
@@ -21,13 +20,13 @@ export const MyCreditCardInfo = () => {
     const addMoney = () => {
         setAddMoneyPopup(addMoneyPopup === true ? false : true)
     }
-    if(removePopup === true) return (
+    if (removePopup === true) return (
         <PopupDeleteCard warning={warning} cardData={cardData}/>
     )
-    if(addMoneyPopup === true) return (
+    if (addMoneyPopup === true) return (
         <AddMoneyPopup addMoney={addMoney}/>
     )
-    return cardData ?(
+    return cardData ? (
         <div>
             Счет: {cardData.amountOfMoney}
             <div style={{position: 'relative'}}>

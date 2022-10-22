@@ -22,15 +22,19 @@ export const UserService = {
         );
         return data;
     },
-    follow: async (id) => {
-        const {data} = await httpService.post(
-            userEndPoint + localStorageService.getUserId() + "/followers/", id
+    follow: async (payload) => {
+        const {data} = await httpService.put(
+            userEndPoint + localStorageService.getUserId() + "/followers/" + payload._id, payload
         )
         return data
     },
     unfollow: async (id) => {
         const {data} = await httpService.delete(
             userEndPoint + localStorageService.getUserId() + "/followers/" + id)
+        return data
+    },
+    getCurrentUser: async () => {
+        const {data} = await httpService.get(userEndPoint + localStorageService.getUserId())
         return data
     }
 };

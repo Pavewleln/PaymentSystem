@@ -1,22 +1,23 @@
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {getCurrentUserData, updateUserData} from "../../Store/users";
+import {getCurrentUserData, getCurrentUserId, updateUserData} from "../../Store/users";
 import {validator} from "../../Utils/validator";
 import TextField from "../../Common/form/textField";
-import SelectField from "../../Common/form/selectField";
 import RadioField from "../../Common/form/radioField";
-import MultiSelectField from "../../Common/form/multiSelectField";
 import TextAreaField from "../../Common/form/textAreaField";
 import CheckBoxField from "../../Common/form/checkBoxField";
 import {useNavigate} from "react-router";
+import {updateUserDataNotice} from "../../Store/notice";
 
 export const UpdateProfile = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate()
     const [isLoading, setIsLoading] = useState(true);
     const [data, setData] = useState();
+    const currentUserId = useSelector(getCurrentUserId())
     const currentUser = useSelector(getCurrentUserData());
     const [errors, setErrors] = useState({});
+    const date = new Date().toLocaleString().split(",").slice(0, 1).join(' ')
     const handleSubmit = (e) => {
         e.preventDefault();
         const isValid = validate();
@@ -24,6 +25,7 @@ export const UpdateProfile = () => {
         dispatch(updateUserData({
             ...data
         }));
+        dispatch(updateUserDataNotice(currentUserId, date))
         navigate(`/profile`)
     };
     useEffect(() => {
@@ -114,7 +116,7 @@ export const UpdateProfile = () => {
             <div className="row m-3">
                 <div className="col-md-6 offset-md-3 shadow p-4 p-2 rounded-4 bg-white">
                     {!isLoading ? (
-                        <form onSubmit={handleSubmit} >
+                        <form onSubmit={handleSubmit}>
                             <TextField
                                 label="Имя"
                                 name="name"
@@ -157,9 +159,9 @@ export const UpdateProfile = () => {
                             />
                             <RadioField
                                 options={[
-                                    { name: "Мужчина", value: "male" },
-                                    { name: "Женщина", value: "female" },
-                                    { name: "Другое", value: "other" }
+                                    {name: "Мужчина", value: "male"},
+                                    {name: "Женщина", value: "female"},
+                                    {name: "Другое", value: "other"}
                                 ]}
                                 value={data.sex}
                                 name="sex"

@@ -21,11 +21,13 @@ export const Home = () => {
                         <h3 style={{marginBottom: '20px'}}>История карты</h3>
                         <Link className={"text-decoration-none fw-normal"} to={"/history"}>Узнать больше</Link>
                     </div>
-                    {cardId && (
+                    {cardId ? (
                         <HistoryLoader>
                             <HistoryInfo historyCardForId={cardId}/>
                         </HistoryLoader>
-                        )
+                    ) : (
+                        <p>У вас нет истории</p>
+                    )
                     }
                 </div>
                 <div className={"bg-white rounded-4 p-2 m-3"} style={{width: '23%'}}>

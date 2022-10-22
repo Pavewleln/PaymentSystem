@@ -2,7 +2,6 @@ import {useSelector} from "react-redux";
 import {getHistory} from "../../Store/history";
 import {getCreditCardsList} from "../../Store/myCreaditCard";
 import {getCurrentUserId} from "../../Store/users";
-import {Link} from "react-router-dom";
 import {HistoryLoader} from "../../Hoc/historyLoader";
 import BNB from "../../../img/BNB.png";
 import ETM from "../../../img/ETM.png";
@@ -16,7 +15,12 @@ export const MyHistory = () => {
     const history = useSelector(getHistory())
     const cards = useSelector(getCreditCardsList())
     const currentUserId = useSelector(getCurrentUserId())
+    const [value, setValue] = useState("По дате");
     const [searchQuery, setSearchQuery] = useState("");
+    const changeSelect = ({target}) => {
+        setValue(target.value);
+        setSearchQuery('')
+    }
 
     const handleSearchQuery = ({target}) => {
         setSearchQuery(target.value);
@@ -27,7 +31,7 @@ export const MyHistory = () => {
         const historyArr = [];
         for (const his of history) {
             for (const id of myCreditCardIds) {
-                if(his !== undefined) {
+                if (his !== undefined) {
                     if (id === his.cardId) {
                         historyArr.push(his);
                         break;
@@ -35,12 +39,22 @@ export const MyHistory = () => {
                 }
             }
         }
+
         function filterUsers(data) {
             const filteredUsers = searchQuery
                 ? data.filter(
-                    (user) => user.datetime
+                    (user) =>
+                        value === "По дате"
+                            ? user.datetime
                             .toLowerCase()
                             .indexOf(searchQuery.toLowerCase()) !== -1
+                            : value === "По номеру отправителя"
+                                ? user.numberCardSender
+                                .toLowerCase()
+                                .indexOf(searchQuery.toLowerCase()) !== -1
+                                : user.numberCardRecipient.toString()
+                                .toLowerCase()
+                                .indexOf(searchQuery.toLowerCase()) !== -1
                 )
                 : data;
             return filteredUsers.filter((u) => u._id !== currentUserId);
@@ -66,7 +80,18 @@ export const MyHistory = () => {
                                paddingRight: '150px',
                                paddingBottom: '12px'
                            }}
-                           placeholder="Поиск по дате" onChange={handleSearchQuery} value={searchQuery}/>
+                           placeholder="Поиск" onChange={handleSearchQuery} value={searchQuery}/>
+                    <select value={value} className={"bg-white border rounded-3 m-2"}
+                            style={{
+                                paddingLeft: '20px',
+                                paddingTop: '13px',
+                                paddingRight: '10px',
+                                paddingBottom: '13px'
+                            }} onChange={changeSelect}>
+                        <option>По дате</option>
+                        <option>По номеру отправителя</option>
+                        <option>По номеру получателя</option>
+                    </select>
                 </div>
                 <Table>
                     <thead>

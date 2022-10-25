@@ -33,7 +33,6 @@ export const Authentication = () => {
                         {myNotice.length > 0 && <div className={s.noticeLength}></div>}
                     </Link>
                     <div className={s.profileName}>
-                        <h6 className={s.h6}>{firstName}</h6>
                         <Link to={"/profile"} className={s.profile}>
                             <img className={s.image} src={currentUser.image ? currentUser.image : profile}/>
                         </Link>

@@ -91,7 +91,6 @@ export const Followers = () => {
                             <th scope="col" className={"text-center"}>Имя</th>
                             <th scope="col" className={"text-center"}>Всего переводов</th>
                             <th scope="col" className={"text-center"}>Всего завершенных</th>
-                            <th scope="col" className={"text-center"}>Место жительства</th>
                             <th scope="col"></th>
                         </tr>
                         </thead>

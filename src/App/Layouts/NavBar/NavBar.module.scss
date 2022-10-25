@@ -1,6 +1,6 @@
 .navBar {
   background: white;
-  padding: 20px;
+  padding: 10px;
   margin-right: 10px;
   z-index: 99;
 }
@@ -23,7 +23,7 @@
   margin-left: 5px;
 }
 
-@media(max-width: 426px) {
+@media(max-width: 600px) {
   .navBar{
     position: fixed;
     display: flex;

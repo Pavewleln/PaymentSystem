@@ -1,0 +1,75 @@
+.home {
+  display: flex;
+  padding: 10px;
+}
+
+.homeLeft {
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  width: 73%;
+}
+
+.homeRight {
+  padding: 5px;
+  background: white;
+  border-radius: 10px;
+  width: 25%;
+  margin: 20px;
+}
+
+.homeTitle {
+  display: flex;
+  justify-content: space-between;
+}
+
+.historyCard {
+  margin-bottom: 20px;
+}
+
+.historyCardDescription {
+  text-decoration: none;
+}
+
+@media(max-width: 1024px) {
+  .homeLeft {
+    width: 65%;
+  }
+  .homeRight {
+    width: 30%;
+  }
+}
+@media(max-width: 768px) {
+  .home {
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .homeLeft {
+    margin: auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    width: 95%;
+  }
+  .homeRight {
+    padding: 5px;
+    background: white;
+    border-radius: 10px;
+    width: 95%;
+    margin: auto;
+    margin-bottom: 10px;
+  }
+}
+@media(max-width: 375px) {
+  .historyCard {
+    font-size: 18px;
+  }
+  .historyCardDescription {
+    font-size: 10px;
+  }
+  .home {
+    display: flex;
+    padding: 5px;
+  }
+}

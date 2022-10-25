@@ -1,0 +1,38 @@
+.myCreditCard {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+  flex-wrap: wrap;
+}
+
+.selectBanksName {
+  margin: 5px;
+  background: white;
+  border-radius: 5px;
+  padding-left: 20px;
+  padding-top: 5px;
+  padding-right: 10px;
+  padding-bottom: 5px;
+}
+
+.addNewCard {
+  margin: 5px;
+  color: white;
+  text-decoration: none;
+}
+
+.creditCard {
+  padding: 15px;
+}
+
+@media(max-width: 1024px) {
+  .selectBanksName {
+    padding-left: 5px;
+    padding-top: 3px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    font-size: 14px;
+  }
+  .myCreditCard {
+  }
+}

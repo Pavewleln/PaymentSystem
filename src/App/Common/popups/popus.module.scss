@@ -1,0 +1,95 @@
+.popup {
+  padding: 40px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 101;
+}
+
+.dialog {
+  border-radius: 10px;
+  padding: 50px;
+  background-color: white;
+  width: 50%;
+  position: relative;
+}
+
+.body {
+  width: 100%;
+}
+
+.form {
+  margin: auto;
+  padding: 20px;
+  width: 100%;
+}
+
+.bodyDelete {
+  width: 100%;
+}
+
+.select {
+  background-color: white;
+  border: 1px solid #ced4da;
+  border-radius: 7px;
+  width: 100%;
+  padding-left: 20px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  margin-bottom: 20px;
+}
+
+.button {
+  background-color: #0dcaf0;
+  width: 100%;
+  margin: auto;
+}
+
+.prev {
+  margin-top: 10px;
+}
+
+@media(max-width: 769px) {
+  .popup {
+    padding: 20px;
+  }
+  .form {
+    width: 100%;
+    padding: 10px;
+  }
+  .dialog {
+    width: 70%;
+  }
+}
+
+@media(max-width: 500px) {
+  .form {
+    width: 100%;
+    padding: 20px;
+  }
+  .select {
+    padding-left: 7px;
+    font-size: 12px;
+  }
+  .dialog {
+    padding: 30px;
+    width: 10 0%;
+  }
+}
+
+@media(max-width: 376px) {
+  .form {
+    width: 100%;
+    padding: 0;
+  }
+  .select {
+    padding-left: 7px;
+    font-size: 12px;
+  }
+  .dialog {
+    padding: 30px;
+  }
+}

@@ -1,0 +1,40 @@
+.historyInfo{
+  overflow: auto;
+  height: 300px;
+}
+.historyBlock {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+  color: #707EAE;
+}
+.image {
+}
+.rate {
+  margin: auto;
+}
+.datetime {
+  margin: auto;
+}
+.pay {
+  margin: auto;
+}
+@media(max-width: 426px) {
+  .image{
+    width: 30px;
+    height: 30px;
+  }
+  .historyBlock{
+    font-size: 12px;
+  }
+}
+@media(max-width: 321px) {
+  .image{
+    width: 25px;
+    height: 25px;
+  }
+  .historyBlock{
+    font-size: 10px;
+  }
+}

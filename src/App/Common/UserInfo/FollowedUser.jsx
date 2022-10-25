@@ -1,6 +1,6 @@
-import {Button} from "react-bootstrap";
-import {follow, unfollow} from "../Store/users";
+import {follow, unfollow} from "../../Store/users";
 import {useDispatch} from "react-redux";
+import s from './UserInfo.module.scss'
 
 export const FollowedUser = ({currentUserData, p}) => {
     const dispatch = useDispatch()
@@ -16,10 +16,12 @@ export const FollowedUser = ({currentUserData, p}) => {
         return (
             <div>
                 {followers && followers.find((f) => f.follower === p._id)
-                    ? <Button
-                        onClick={() => unfollowUser(followers[followers.findIndex((f) => f.follower === p._id)]._id)}>Удалить
-                        из друзей</Button>
-                    : <Button onClick={() => followUser(p._id)}>Добавить в друзья</Button>
+                    ? <button className={s.button}
+                              onClick={() => unfollowUser(followers[followers.findIndex((f) => f.follower === p._id)]._id)}>
+                        Удалить из друзей</button>
+                    : <button className={s.button} onClick={() => followUser(p._id)}>
+                        Добавить в друзья
+                    </button>
 
                 }
             </div>
@@ -27,7 +29,7 @@ export const FollowedUser = ({currentUserData, p}) => {
     } else {
         return (
             <div>
-                <Button onClick={() => followUser(p._id)}>Добавить в друзья</Button>
+                <button className={s.button} onClick={() => followUser(p._id)}>Добавить в друзья</button>
             </div>
         )
     }

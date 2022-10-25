@@ -1,0 +1,56 @@
+.accounting {
+}
+
+.allPayment {
+  width: 70%;
+  margin: auto;
+}
+
+.payments {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sum {
+  margin: 7px;
+  font-size: 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.text {
+  color: cornflowerblue;
+}
+
+.title {
+  text-align: center;
+}
+
+.paymentInMyCard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+}
+
+.card {
+  margin: auto;
+  font-size: 20px;
+  margin-top: 50px;
+}
+
+.sumCard {
+  margin: 10px;
+}
+@media(max-width: 769px) {
+  .allPayment {
+    width: 80%;
+    margin: auto;
+  }
+}
+@media(max-width: 375px) {
+  .allPayment {
+    width: 90%;
+    margin: auto;
+  }
+}

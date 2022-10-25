@@ -2,7 +2,8 @@ import {useSelector} from "react-redux";
 import {getHistory} from "../../Store/history";
 import {getCreditCardsList} from "../../Store/myCreaditCard";
 import {getCurrentUserId} from "../../Store/users";
-import {MyCreditCardProfile} from "../Profile/MyCreditCardProfile";
+import {MyCreditCardProfile} from "../Profile/MyCreditCardProfile/MyCreditCardProfile";
+import s from './Accounting.module.scss'
 
 export const MyExpensesAndIncome = () => {
     const history = useSelector(getHistory())
@@ -12,8 +13,6 @@ export const MyExpensesAndIncome = () => {
     const date = new Date().toLocaleString().split(",").slice(0, 1).join(' ')
     //Число неделю назад
     const newDate = new Intl.DateTimeFormat().format(new Date() - 7 * 24 * 60 * 60 * 1000)
-    // Число месяц назад
-    const newMonthDate = new Intl.DateTimeFormat().format(new Date().setMonth(new Date().getMonth() - 1))
     if (cards && history) {
         const myCreditCards = cards.filter((p) => p.userId === currentUserId)
         const myCreditCardIds = myCreditCards.map(c => c._id)
@@ -66,68 +65,64 @@ export const MyExpensesAndIncome = () => {
         const historyPaysSumNegativeInMyCardForSevenDays = (id) => ((history.map((h) => h.datetime > newDate ? h : 0).map((h) => h.cardId === id ? Number(h.pay) : 0)).map((p) => p < 0 ? p : 0)?.reduce((a, b) => a + b))
 
         return (
-            <div>
-                <div className={"w-75 m-auto"}>
-                    <div className={"d-flex justify-content-between"}>
-                        <div className={"m-2 fs-3 d-flex flex-column align-items-center"}>
-                            <p>Всего получено:</p>
-                            <p className={"text-info"}>{historyPaysSumPositiveForAllLife}</p>
+            <div className={s.accounting}>
+                <div className={s.allPayment}>
+                    <div className={s.payments}>
+                        <div className={s.sum}>
+                            <p className={s.title}>Всего получено:</p>
+                            <p className={s.text}>{historyPaysSumPositiveForAllLife}</p>
                         </div>
-                        <div className={"m-2 fs-3 d-flex flex-column align-items-center"}>
-                            <p>Всего потрачено:</p>
-                            <p className={"text-info"}>{historyPaysSumNegativeForAllLife}</p>
-                        </div>
-                    </div>
-                    <hr/>
-                    <div className={"d-flex justify-content-between"}>
-                        <div className={"m-2 fs-3 d-flex flex-column align-items-center"}>
-                            <p>Получено за 7 дней:</p>
-                            <p className={"text-info"}>{historyPaysSumPositiveForSevenDays}</p>
-                        </div>
-                        <div className={"m-2 fs-3 d-flex flex-column align-items-center"}>
-                            <p>Потрачено за 7 дней:</p>
-                            <p className={"text-info"}>{historyPaysSumNegativeForSevenDays}</p>
+                        <div className={s.sum}>
+                            <p className={s.title}>Всего потрачено:</p>
+                            <p className={s.text}>{historyPaysSumNegativeForAllLife}</p>
                         </div>
                     </div>
                     <hr/>
-                    <div className={"d-flex justify-content-between"}>
-                        <div className={"m-2 fs-3 d-flex flex-column align-items-center"}>
-                            <p>Получено за сегодня:</p>
-                            <p className={"text-info"}>{historyPaysSumPositiveForOneDay}</p>
+                    <div className={s.payments}>
+                        <div className={s.sum}>
+                            <p className={s.title}>Получено за 7 дней:</p>
+                            <p className={s.text}>{historyPaysSumPositiveForSevenDays}</p>
                         </div>
-                        <div className={"m-2 fs-3 d-flex flex-column align-items-center"}>
-                            <p>Потрачено за сегодня:</p>
-                            <p className={"text-info"}>{historyPaysSumNegativeForOneDay}</p>
+                        <div className={s.sum}>
+                            <p className={s.title}>Потрачено за 7 дней:</p>
+                            <p className={s.text}>{historyPaysSumNegativeForSevenDays}</p>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div className={s.payments}>
+                        <div className={s.sum}>
+                            <p className={s.title}>Получено за сегодня:</p>
+                            <p className={s.text}>{historyPaysSumPositiveForOneDay}</p>
+                        </div>
+                        <div className={s.sum}>
+                            <p className={s.title}>Потрачено за сегодня:</p>
+                            <p className={s.text}>{historyPaysSumNegativeForOneDay}</p>
                         </div>
                     </div>
                 </div>
-                <div className={"d-flex flex-wrap justify-content-start"}>
+                <div className={s.paymentInMyCard}>
                     {myCreditCards.map((c) => (
-                        <div key={c._id} className={"m-auto fs-4 mt-5"}>
+                        <div className={s.card} key={c._id}>
                             <MyCreditCardProfile cards={c}/>
-                            <div className={"m-2"}>
-                                <p>Всего получено: <span
-                                    className={"text-info"}>{historyPaysSumPositiveInMyCard(c._id)}</span></p>
+                            <div className={s.sumCard}>
+                                <p>Всего получено: <span className={s.text}>{historyPaysSumPositiveInMyCard(c._id)}</span></p>
                             </div>
-                            <div className={"m-2"}>
-                                <p>Всего потрачено: <span
-                                    className={"text-info"}>{historyPaysSumNegativeInMyCard(c._id)}</span></p>
+                            <div className={s.sumCard}>
+                                <p>Всего потрачено: <span className={s.text}>{historyPaysSumNegativeInMyCard(c._id)}</span></p>
                             </div>
                             <hr/>
-                            <div className={"m-2"}>
-                                <p>Всего получено за 7 дней: <span className={"text-info"}>{historyPaysSumPositiveInMyCardForSevenDays(c._id)}</span></p>
+                            <div className={s.sumCard}>
+                                <p>Всего получено за 7 дней: <span className={s.text}>{historyPaysSumPositiveInMyCardForSevenDays(c._id)}</span></p>
                             </div>
-                            <div className={"m-2"}>
-                                <p>Всего потрачено за 7 дней: <span className={"text-info"}>{historyPaysSumNegativeInMyCardForSevenDays(c._id)}</span></p>
+                            <div className={s.sumCard}>
+                                <p>Всего потрачено за 7 дней: <span className={s.text}>{historyPaysSumNegativeInMyCardForSevenDays(c._id)}</span></p>
                             </div>
                             <hr/>
-                            <div className={"m-2"}>
-                                <p>Всего получено сегодня: <span
-                                    className={"text-info"}>{historyPaysSumPositiveInMyCardForOneDay(c._id)}</span></p>
+                            <div className={s.sumCard}>
+                                <p>Всего получено сегодня: <span className={s.text}>{historyPaysSumPositiveInMyCardForOneDay(c._id)}</span></p>
                             </div>
-                            <div className={"m-2"}>
-                                <p>Всего потрачено сегодня: <span
-                                    className={"text-info"}>{historyPaysSumNegativeInMyCardForOneDay(c._id)}</span></p>
+                            <div className={s.sumCard}>
+                                <p>Всего потрачено сегодня: <span className={s.text}>{historyPaysSumNegativeInMyCardForOneDay(c._id)}</span></p>
                             </div>
                             <hr/>
                         </div>

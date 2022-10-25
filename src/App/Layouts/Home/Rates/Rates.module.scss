@@ -1,0 +1,25 @@
+.rates {
+  display: flex;
+}
+.rate {
+  padding: 20px;
+  margin: 20px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  background: white;
+}
+.rateLeft {
+  padding: 20px;
+}
+.usd {
+  font-size: 16px;
+  margin-top: 5px;
+}
+.value {
+  font-size: 22px;
+  line-height: 0;
+}
+.rateRight{
+  padding: 20px;
+}

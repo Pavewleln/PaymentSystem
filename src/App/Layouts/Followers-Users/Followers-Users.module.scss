@@ -1,0 +1,221 @@
+.users {
+  padding: 40px;
+  background: white;
+  border-radius: 10px;
+  margin: 30px;
+}
+
+.usersTitle {
+  display: flex;
+  align-items: center;
+  margin: 20px;
+}
+
+.input {
+  background: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 20px;
+  padding-left: 20px;
+  padding-top: 12px;
+  padding-right: 150px;
+  padding-bottom: 12px;
+}
+
+.select {
+  background: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 20px;
+  padding-left: 20px;
+  padding-top: 13px;
+  padding-right: 10px;
+  padding-bottom: 13px;
+}
+.paginator {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.th {
+  text-align: center;
+}
+
+@media (max-width: 1025px) {
+  .users {
+    padding: 10px;
+    background: white;
+    border-radius: 10px;
+    margin: 10px;
+  }
+
+  .usersTitle {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+  }
+  .input {
+    background: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 20px;
+    padding-left: 20px;
+    padding-top: 12px;
+    padding-right: 80px;
+    padding-bottom: 12px;
+    font-size: 14px;
+  }
+
+  .select {
+    background: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 0px;
+    padding-left: 10px;
+    padding-top: 13px;
+    padding-right: 0px;
+    padding-bottom: 13px;
+    font-size: 14px;
+  }
+
+  .h3 {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 769px) {
+  .users {
+    padding: 10px;
+    background: white;
+    border-radius: 10px;
+    margin: 0;
+  }
+
+  .usersTitle {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 0;
+  }
+  .input {
+    background: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 5px;
+    padding-left: 20px;
+    padding-top: 6px;
+    padding-right: 30px;
+    padding-bottom: 6px;
+    font-size: 14px;
+  }
+
+  .select {
+    background: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 5px;
+    padding-left: 10px;
+    padding-top: 6px;
+    padding-right: 0px;
+    padding-bottom: 6px;
+    font-size: 14px;
+  }
+
+  .h3 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 426px) {
+
+  .input {
+    background: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 5px;
+    padding-left: 10px;
+    padding-top: 6px;
+    padding-right: 20px;
+    padding-bottom: 6px;
+    font-size: 12px;
+  }
+
+  .select {
+    background: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 5px;
+    padding-left: 5px;
+    padding-top: 6px;
+    padding-right: 0;
+    padding-bottom: 6px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 400px) {
+  .h3 {
+    font-size: 16px;
+  }
+  .allUsers {
+    font-size: 14px;
+  }
+
+  .input {
+    background: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 5px;
+    padding-left: 5px;
+    padding-top: 6px;
+    padding-right: 0;
+    padding-bottom: 6px;
+    font-size: 12px;
+  }
+
+  .select {
+    background: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 5px;
+    padding-left: 0;
+    padding-top: 6px;
+    padding-right: 0;
+    padding-bottom: 6px;
+    font-size: 12px;
+  }
+}
+@media(max-width: 340px) {
+  .h3 {
+    font-size: 16px;
+  }
+  .allUsers {
+    font-size: 12px;
+  }
+  .input {
+    background: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 5px;
+    padding-left: 5px;
+    padding-top: 6px;
+    padding-right: 0;
+    padding-bottom: 6px;
+    font-size: 10px;
+  }
+
+  .select {
+    background: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 5px;
+    padding-left: 0;
+    padding-top: 6px;
+    padding-right: 0;
+    padding-bottom: 6px;
+    font-size: 10px;
+  }
+  .users {
+    padding: 5px;
+  }
+}

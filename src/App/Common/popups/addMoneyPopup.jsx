@@ -7,7 +7,7 @@ import {getCreditCardsList, loadCardsList, TranslateMoney} from "../../Store/myC
 import {validator} from "../../Utils/validator";
 import TextField from "../form/textField";
 import {getCurrentUserId} from "../../Store/users";
-import {createHistory} from "../../Store/history";
+import s from './popus.module.scss'
 
 export const AddMoneyPopup = ({addMoney}) => {
     const navigate = useNavigate()
@@ -77,21 +77,21 @@ export const AddMoneyPopup = ({addMoney}) => {
         }));
     };
     return (
-        <div onClick={addMoney} className={"p-4 m-2 position-fixed top-0 w-100 h-100 "}
-             style={{left: '0px', backgroundColor: 'rgba(0, 0, 0, 0.4)'}}>
-            <Modal.Dialog onClick={e => e.stopPropagation()}
-                          className={"p-5 bg-white rounded-4 w-50 position-relative"}>
+        <div onClick={addMoney} className={s.popup}>
+            <Modal.Dialog onClick={e => e.stopPropagation()} className={s.dialog}>
                 <Modal.Header>
                     <Modal.Title>Пополнение карты</Modal.Title>
                 </Modal.Header>
 
-                <Modal.Body className={"w-100"}>
-                    <p>Вы можете пополнить карту только с других своих карт или попросите друга. Данные о переводах между своими картами не остаются в истории</p>
-                    <form onSubmit={handleSubmit} className={"m-auto p-5 w-50"}>
+                <Modal.Body className={s.body}>
+                    <p className={s.bodyText}>Вы можете пополнить карту только с других своих карт или попросите друга. Данные о переводах
+                        между своими картами не остаются в истории</p>
+                    <form onSubmit={handleSubmit} className={s.form}>
                         {myCardNumbers.length < 1
                             ? <div>У вас только одна карта</div>
-                            : <div><p>Выберите карту</p><select value={value} onChange={changeSelect} className={"bg-white border rounded-3"}
-                                      style={{paddingLeft: '20px', paddingTop: '5px', paddingRight: '48px', paddingBottom: '5px'}}>
+                            : <div>
+                                <p>Выберите карту</p>
+                                <select value={value} className={s.select} onChange={changeSelect}>
                                 <option>Выберите карту</option>
                                 {myCardNumbers.map((c) => (
                                     <option key={c}>{c}</option>
@@ -105,18 +105,17 @@ export const AddMoneyPopup = ({addMoney}) => {
                             onChange={handleChange}
                             error={errors.sum}
                         />
-                        <button
-                            className="btn btn-primary w-100 mx-auto"
+                        <Button className={s.button}
                             type="submit"
                             disabled={!isValid}
                         >
                             Пополнить
-                        </button>
+                        </Button>
                     </form>
                 </Modal.Body>
 
-                <Modal.Footer>
-                    <Button variant="secondary" className={"m-2"} onClick={addMoney}>Отмена</Button>
+                <Modal.Footer className={s.prev}>
+                    <Button variant="secondary" onClick={addMoney}>Отмена</Button>
                 </Modal.Footer>
             </Modal.Dialog>
         </div>

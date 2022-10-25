@@ -1,0 +1,59 @@
+.notice {
+  margin: 10px;
+  padding: 10px;
+}
+.block {
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  margin: 20px;
+}
+.new{
+  color: #0c63e4;
+  font-size: 16px;
+  width: 10%;
+  margin: 10px;
+}
+.dateTime {
+  font-size: 16px;
+  text-decoration: underline;
+  width: 10%;
+  margin: 10px;
+}
+.text {
+  width: 85%;
+  margin-left: 20px;
+}
+.delete {
+  font-size: 22px;
+  color: red;
+  margin-left: 20px;
+}
+@media(max-width: 769px) {
+  .new{
+    font-size: 12px;
+  }
+  .dateTime {
+    font-size: 12px;
+  }
+}
+@media(max-width: 426px) {
+  .text{
+    font-size: 14px;
+  }
+}
+@media(max-width: 376px) {
+  .notice {
+    margin: 0;
+    padding: 0;
+  }
+  .text {
+    font-size: 12px;
+  }
+  .new{
+    font-size: 10px;
+  }
+  .dateTime {
+    font-size: 10px;
+  }
+}

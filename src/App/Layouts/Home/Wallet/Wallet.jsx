@@ -1,8 +1,8 @@
 import {useSelector} from "react-redux";
-import {getCreditCardsList} from "../../Store/myCreaditCard";
-import {getCurrentUserId} from "../../Store/users";
+import {getCreditCardsList} from "../../../Store/myCreaditCard";
+import {getCurrentUserId} from "../../../Store/users";
 import {Link} from "react-router-dom";
-import {MyCreditCards} from "./MyCreditCards";
+import {MyCreditCards} from "../MyCreditCards/MyCreditCards";
 
 export const Wallet = () => {
     const cards = useSelector(getCreditCardsList())

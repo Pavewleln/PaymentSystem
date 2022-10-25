@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
-import RadioField from "../Common/form/radioField";
+import RadioField from "../../Common/form/radioField";
 import {useNavigate} from "react-router";
 import {
     createNewCard,
@@ -8,10 +8,12 @@ import {
     getCreditCardsList,
     loadBanksNameList,
     loadCardsList
-} from "../Store/myCreaditCard";
-import {getCurrentUserData, getCurrentUserId, getIsLoggedIn} from "../Store/users";
-import SelectField from "../Common/form/selectField";
-import {validator} from "../Utils/validator";
+} from "../../Store/myCreaditCard";
+import {getCurrentUserData, getCurrentUserId, getIsLoggedIn} from "../../Store/users";
+import SelectField from "../../Common/form/selectField";
+import {validator} from "../../Utils/validator";
+import s from './CreateCard.module.scss'
+import {Button} from "react-bootstrap";
 
 export const CreateCard = () => {
     const navigate = useNavigate()
@@ -89,7 +91,7 @@ export const CreateCard = () => {
             value: b
         }));
         return (
-            <form onSubmit={handleSubmit} className={"p-4 m-5"}>
+            <form onSubmit={handleSubmit} className={s.form}>
                 <SelectField
                     label="Выбери карту"
                     defaultOption={banksList.length !== 0 ? "Можно выбрать только карту, которой у вас еще нет" : "У вас есть все карты нашего банка"}
@@ -109,13 +111,12 @@ export const CreateCard = () => {
                     onChange={handleChange}
                     label="Какой формат карты вам нужен"
                 />
-                <button
-                    className="btn btn-primary w-100 mx-auto"
+                <Button
                     type="submit"
                     disabled={!isValid}
                 >
-                    Submit
-                </button>
+                    Создать
+                </Button>
             </form>
         )
     } else {

@@ -1,9 +1,12 @@
-import {UserInfo} from "../Common/UserInfo";
+import {UserInfo} from "../../Common/UserInfo/UserInfo";
 import {useSelector} from "react-redux";
-import {getCurrentUserId, getUsers} from "../Store/users";
+import {getCurrentUserId, getUsers} from "../../Store/users";
 import {useState} from "react";
-import {paginate} from "../Utils/paginate";
-import {Pagination} from "../Common/Pagination";
+import {paginate} from "../../Utils/paginate";
+import {Pagination} from "../../Common/UserInfo/Pagination";
+import s from './Followers-Users.module.scss'
+import {Table} from "react-bootstrap";
+import TextField from "../../Common/form/textField";
 
 export const Users = () => {
     const allUsersSystem = useSelector(getUsers())
@@ -47,25 +50,12 @@ export const Users = () => {
         const users = paginate(usersCrop, currentPage, pageSize);
         const count = allUsersSystem.length;
         return (
-            <div className={"bg-white m-4 p-4 rounded-4"}>
-                <div className={"d-flex"}>
-                    <h2 className={"m-2"}>Пользователи</h2>
-                    <div className={"d-flex"}>
-                        <input className={"bg-white border rounded-3 m-2"}
-                               style={{
-                                   paddingLeft: '20px',
-                                   paddingTop: '12px',
-                                   paddingRight: '150px',
-                                   paddingBottom: '12px'
-                               }}
-                               placeholder="Найти" onChange={handleSearchQuery} value={searchQuery}/>
-                        <select value={value} className={"bg-white border rounded-3 m-2"}
-                                style={{
-                                    paddingLeft: '20px',
-                                    paddingTop: '3px',
-                                    paddingRight: '10px',
-                                    paddingBottom: '3px'
-                                }} onChange={changeSelect}>
+            <div className={s.users}>
+                <div className={s.usersTitle}>
+                    <h2 className={s.h3}>Пользователи</h2>
+                    <div>
+                        <input className={s.input} placeholder="Найти" onChange={handleSearchQuery} value={searchQuery}/>
+                        <select value={value} className={s.select} onChange={changeSelect}>
                             <option>По имени</option>
                             <option>По телефону</option>
                             <option>По месту жительства</option>
@@ -73,21 +63,21 @@ export const Users = () => {
                     </div>
                 </div>
                 <div>
-                    <table className="table table-hover bg-white rounded-4">
+                    <Table>
                         <thead>
                         <tr className={"bg-light"}>
-                            <th scope="col" className={"text-center"}>Имя</th>
-                            <th scope="col" className={"text-center"}>Всего переводов</th>
-                            <th scope="col" className={"text-center"}>Место жительства</th>
+                            <th className={s.th} scope="col">Имя</th>
+                            <th className={s.th} scope="col">Всего переводов</th>
+                            <th className={s.th} scope="col">Место жительства</th>
                             <th scope="col"></th>
                         </tr>
                         </thead>
                         {users.map((p) => (
                             <UserInfo key={p._id} p={p}/>
                         ))}
-                    </table>
-                    <div className={"d-flex justify-content-between align-items-center"}>
-                        <p>
+                    </Table>
+                    <div className={s.paginator}>
+                        <p className={s.allUsers}>
                             Всего пользователей <b>{count}</b>
                         </p>
                         <Pagination

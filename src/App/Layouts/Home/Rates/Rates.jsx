@@ -1,18 +1,16 @@
 import {Line, LineChart} from "recharts";
 import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import convert from '../../../img/convert.svg'
-import BTN from '../../../img/BTN.png'
-import LTC from '../../../img/LTM.png'
-import ETM from '../../../img/ETM.png'
-import BNB from '../../../img/BNB.png'
-import {getRates, loadRatesList} from "../../Store/rates";
+import convert from '../../../../img/convert.svg'
+import BTN from '../../../../img/BTN.png'
+import LTC from '../../../../img/LTM.png'
+import ETM from '../../../../img/ETM.png'
+import BNB from '../../../../img/BNB.png'
+import {getRates, loadRatesList} from "../../../Store/rates";
+import s from './Rates.module.scss'
 
 export const Rates = () => {
     const dispatch = useDispatch()
-    // useEffect(() => {
-    //     dispatch(loadRatesList())
-    // }, [])
     const rates = useSelector(getRates())
     if (rates) {
         const data = [{
@@ -32,17 +30,17 @@ export const Rates = () => {
         }]
         return (
             <div>
-                <div className="d-flex">
+                <div className={s.rates}>
                     {Object.values(rates).map((p) => (
-                        <div key={p.code} className="p-2 m-2 rounded-4 d-flex align-items-center bg-white">
-                            <div className={"p-2"}>
+                        <div key={p.code} className={s.rate}>
+                            <div className={s.rateLeft}>
                                 <img
                                     src={(p.code === "BNB" ? BNB : p.code === "AMD" ? ETM : p.code === "LTC" ? LTC : BTN)}/>
-                                <p style={{fontSize: '16px', marginTop: '5px'}}>{p.code} <img src={convert}/> USD</p>
-                                <p style={{fontSize: '22px', lineHeight: '0'}}>{p.value}</p>
+                                <p className={s.usd}>{p.code} <img src={convert}/> USD</p>
+                                <p className={s.value}>{p.value}</p>
                                 <p>-23%</p>
                             </div>
-                            <div className={"p-2"}>
+                            <div className={s.rateRight}>
                                 <LineChart width={140} height={40} data={data}>
                                     <Line type="monotone" dataKey="uv" stroke="#8884d8"/>
                                 </LineChart>

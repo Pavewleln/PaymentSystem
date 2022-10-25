@@ -11,10 +11,10 @@ export const Pagination = ({itemsCount, pageSize, currentPage, onPageChange}) =>
                 <ul className="pagination">
                     {currentPage > 1 &&
                         <li className="page-item">
-                            <a className="page-link" href="#" aria-label="Previous"
-                               onClick={() => onPageChange(currentPage - 1)}>
+                            <div className="page-link" aria-label="Previous"
+                               onClick={() => onPageChange(currentPage - 1)} role={"button"}>
                                 <span aria-hidden="true">&laquo;</span>
-                            </a>
+                            </div>
                         </li>}
                     {pages.map((page) => (
                         <li
@@ -33,10 +33,10 @@ export const Pagination = ({itemsCount, pageSize, currentPage, onPageChange}) =>
                         </li>
                     ))}
                     {currentPage < pageCount && <li className="page-item">
-                        <a className="page-link" href="#" aria-label="Next"
-                           onClick={() => onPageChange(currentPage + 1)}>
+                        <div className="page-link" aria-label="Next"
+                           onClick={() => onPageChange(currentPage + 1)} role={"button"}>
                             <span aria-hidden="true">&raquo;</span>
-                        </a>
+                        </div>
                     </li>}
 
                 </ul>

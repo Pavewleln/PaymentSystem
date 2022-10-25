@@ -1,0 +1,79 @@
+
+.creditCardTitle {
+  color: #5A55D2;
+  font-size: 28px;
+}
+
+.creditCardInfo {
+  position: relative;
+  color: white;
+  text-decoration: none;
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.image {
+  width: 250px
+}
+
+.bankName {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  font-size: 18px;
+}
+
+.paymentName {
+  position: absolute;
+  top: 10px;
+  left: 200px;
+  font-size: 16px;
+}
+
+.numberCard {
+  position: absolute;
+  top: 100px;
+  left: 20px;
+  font-size: 18px;
+}
+
+.authorName {
+  position: absolute;
+  top: 120px;
+  left: 20px;
+  font-size: 12px
+}
+
+@media(max-width: 1024px) {
+  .image{
+    width: 180px;
+  }
+  .creditCardTitle {
+    font-size: 20px;
+  }
+  .creditCardInfo {
+    width: 180px
+  }
+  .block{
+    width: 180px
+  }
+  .bankName {
+    font-size: 12px;
+    left: 15px;
+  }
+  .paymentName {
+    left: 130px;
+    font-size: 12px;
+  }
+  .numberCard {
+    font-size: 14px;
+    left: 15px;
+    top: 70px;
+  }
+  .authorName {
+    left: 15px;
+    top: 85px;
+  }
+}

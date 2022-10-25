@@ -1,0 +1,76 @@
+.profileInfo {
+  display: flex;
+  text-align: center;
+}
+
+.image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  line-height: 0;
+  margin: 2px;
+}
+
+.profileDescription {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.telephone {
+  font-size: 12px;
+}
+
+.td {
+  margin: auto;
+  font-size: 16px;
+}
+
+.button {
+  font-size: 14px;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  background: #0d6efd;
+}
+
+@media(max-width: 769px) {
+  .td {
+    font-size: 12px;
+  }
+  .name {
+    font-size: 10px;
+  }
+  .button {
+    font-size: 8px;
+    padding: 7px;
+  }
+  .telephone {
+    font-size: 8px;
+  }
+}
+
+@media(max-width: 376px) {
+  .td {
+    font-size: 8px;
+  }
+  .name {
+    font-size: 10px;
+  }
+  .telephone {
+    font-size: 8px;
+  }
+  .button {
+    font-size: 8px;
+    padding: 5px;
+  }
+}

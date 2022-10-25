@@ -1,0 +1,295 @@
+.history {
+    padding: 40px;
+    background: white;
+    border-radius: 10px;
+    margin: 30px;
+}
+
+.historyTitle {
+    display: flex;
+    align-items: center;
+    margin: 20px;
+}
+
+.input {
+    background: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 20px;
+    padding-left: 20px;
+    padding-top: 12px;
+    padding-right: 150px;
+    padding-bottom: 12px;
+}
+
+.select {
+    background: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 20px;
+    padding-left: 20px;
+    padding-top: 13px;
+    padding-right: 10px;
+    padding-bottom: 13px;
+}
+
+th {
+    text-align: center;
+}
+
+td {
+    text-align: center;
+}
+
+.p {
+    color: #707EAE;
+}
+
+.tbody {
+    margin: 20px;
+}
+
+@media (max-width: 1025px) {
+    .history {
+        padding: 10px;
+        background: white;
+        border-radius: 10px;
+        margin: 10px;
+    }
+
+    .historyTitle {
+        display: flex;
+        align-items: center;
+        margin: 10px;
+    }
+
+    .tbody {
+        margin: 10px;
+    }
+
+    th {
+        font-size: 16px;
+    }
+
+    td {
+        font-size: 14px;
+    }
+
+    .img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .input {
+        background: white;
+        border: 1px solid black;
+        border-radius: 10px;
+        margin: 20px;
+        padding-left: 20px;
+        padding-top: 12px;
+        padding-right: 80px;
+        padding-bottom: 12px;
+        font-size: 14px;
+    }
+
+    .select {
+        background: white;
+        border: 1px solid black;
+        border-radius: 10px;
+        margin: 0px;
+        padding-left: 10px;
+        padding-top: 13px;
+        padding-right: 0px;
+        padding-bottom: 13px;
+        font-size: 14px;
+    }
+
+    .h3 {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 769px) {
+    .history {
+        padding: 10px;
+        background: white;
+        border-radius: 10px;
+        margin: 0;
+    }
+
+    .historyTitle {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .tbody {
+        margin: 5px;
+    }
+
+    th {
+        font-size: 12px;
+    }
+
+    td {
+        font-size: 8px;
+    }
+
+    .img {
+        width: 23px;
+        height: 23px;
+    }
+
+    .input {
+        background: white;
+        border: 1px solid black;
+        border-radius: 10px;
+        margin: 5px;
+        padding-left: 20px;
+        padding-top: 6px;
+        padding-right: 30px;
+        padding-bottom: 6px;
+        font-size: 14px;
+    }
+
+    .select {
+        background: white;
+        border: 1px solid black;
+        border-radius: 10px;
+        margin: 5px;
+        padding-left: 10px;
+        padding-top: 6px;
+        padding-right: 0px;
+        padding-bottom: 6px;
+        font-size: 14px;
+    }
+
+    .h3 {
+        font-size: 20px;
+    }
+
+    .table {
+    }
+}
+
+@media (max-width: 426px) {
+    th {
+        font-size: 10px;
+    }
+
+    td {
+        font-size: 8px;
+    }
+
+    .input {
+        background: white;
+        border: 1px solid black;
+        border-radius: 10px;
+        margin: 5px;
+        padding-left: 10px;
+        padding-top: 6px;
+        padding-right: 20px;
+        padding-bottom: 6px;
+        font-size: 12px;
+    }
+
+    .select {
+        background: white;
+        border: 1px solid black;
+        border-radius: 10px;
+        margin: 5px;
+        padding-left: 5px;
+        padding-top: 6px;
+        padding-right: 0;
+        padding-bottom: 6px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 400px) {
+    .h3 {
+        font-size: 16px;
+    }
+
+    th {
+        font-size: 10px;
+    }
+
+    td {
+        font-size: 8px;
+    }
+
+    .input {
+        background: white;
+        border: 1px solid black;
+        border-radius: 10px;
+        margin: 5px;
+        padding-left: 5px;
+        padding-top: 6px;
+        padding-right: 0;
+        padding-bottom: 6px;
+        font-size: 12px;
+    }
+
+    .select {
+        background: white;
+        border: 1px solid black;
+        border-radius: 10px;
+        margin: 5px;
+        padding-left: 0;
+        padding-top: 6px;
+        padding-right: 0;
+        padding-bottom: 6px;
+        font-size: 12px;
+    }
+    .th1{
+        display: none;
+    }
+    .td1{
+        display: none;
+    }
+}
+@media(max-width: 361px) {
+    .h3 {
+        font-size: 16px;
+    }
+
+    th {
+        font-size: 8px;
+    }
+
+    td {
+        font-size: 6px;
+    }
+
+    .input {
+        background: white;
+        border: 1px solid black;
+        border-radius: 10px;
+        margin: 5px;
+        padding-left: 5px;
+        padding-top: 6px;
+        padding-right: 0;
+        padding-bottom: 6px;
+        font-size: 10px;
+    }
+
+    .select {
+        background: white;
+        border: 1px solid black;
+        border-radius: 10px;
+        margin: 5px;
+        padding-left: 0;
+        padding-top: 6px;
+        padding-right: 0;
+        padding-bottom: 6px;
+        font-size: 10px;
+    }
+    .tbody {
+        margin: 0;
+    }
+    .history {
+        padding: 5px;
+    }
+}

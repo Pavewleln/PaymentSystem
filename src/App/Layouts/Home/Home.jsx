@@ -1,10 +1,11 @@
-import {Rates} from "./Rates";
-import {HistoryInfo} from "./HistoryInfo";
-import {Wallet} from "./Wallet";
+import {Rates} from "./Rates/Rates";
+import {HistoryInfo} from "./HistoryInfo/HistoryInfo";
+import {Wallet} from "./Wallet/Wallet";
 import {Link} from "react-router-dom";
 import {CreditCardsLoader} from "../../Hoc/creditCardsLoader";
 import {HistoryLoader} from "../../Hoc/historyLoader";
 import React, {useContext, useState} from "react";
+import s from './Home.module.scss'
 
 const WalletContext = React.createContext()
 export const useWallet = () => {
@@ -15,11 +16,11 @@ export const Home = () => {
     return (
         <div>
             <Rates/>
-            <div className="d-flex p-2">
-                <div className={" p-4 bg-white rounded-4"} style={{width: '73%'}}>
-                    <div className={"d-flex justify-content-between"}>
-                        <h3 style={{marginBottom: '20px'}}>История карты</h3>
-                        <Link className={"text-decoration-none fw-normal"} to={"/history"}>Узнать больше</Link>
+            <div className={s.home}>
+                <div className={s.homeLeft}>
+                    <div className={s.homeTitle}>
+                        <h3 className={s.historyCard}>История карты</h3>
+                        <Link className={s.historyCardDescription} to={"/history"}>Узнать больше</Link>
                     </div>
                     {cardId ? (
                         <HistoryLoader>
@@ -30,7 +31,7 @@ export const Home = () => {
                     )
                     }
                 </div>
-                <div className={"bg-white rounded-4 p-2 m-3"} style={{width: '23%'}}>
+                <div className={s.homeRight}>
                     <WalletContext.Provider value={{setCardId}}>
                         <CreditCardsLoader>
                             <Wallet/>

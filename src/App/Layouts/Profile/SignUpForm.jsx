@@ -187,7 +187,7 @@ export const SignUpForm = () => {
                 type="submit"
                 disabled={!isValid}
             >
-                Submit
+                Зарегистрироваться
             </button>
         </form>
     );

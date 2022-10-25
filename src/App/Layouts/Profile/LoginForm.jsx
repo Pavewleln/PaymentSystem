@@ -94,7 +94,7 @@ export const LoginForm = () => {
                 type="submit"
                 disabled={!isValid}
             >
-                Submit
+                Войти
             </button>
         </form>
     );

@@ -10,6 +10,7 @@ import BTN from "../../../img/BTN.png";
 import {Table} from "react-bootstrap";
 import {useState} from "react";
 import _ from "lodash";
+import s from './History.module.css'
 
 export const MyHistory = () => {
     const history = useSelector(getHistory())
@@ -70,68 +71,53 @@ export const MyHistory = () => {
         }
         const sortedUsers = handleSort()
         return (
-            <div className={" p-4 bg-white rounded-4 m-3"}>
-                <div className={"d-flex align-items-center m-2"}>
-                    <h3>История</h3>
-                    <input className={"bg-white border rounded-3 m-2"}
-                           style={{
-                               paddingLeft: '20px',
-                               paddingTop: '12px',
-                               paddingRight: '150px',
-                               paddingBottom: '12px'
-                           }}
-                           placeholder="Поиск" onChange={handleSearchQuery} value={searchQuery}/>
-                    <select value={value} className={"bg-white border rounded-3 m-2"}
-                            style={{
-                                paddingLeft: '20px',
-                                paddingTop: '13px',
-                                paddingRight: '10px',
-                                paddingBottom: '13px'
-                            }} onChange={changeSelect}>
-                        <option>По дате</option>
-                        <option>По номеру отправителя</option>
-                        <option>По номеру получателя</option>
-                    </select>
+            <div className={s.history}>
+                <div className={s.historyTitle}>
+                    <h3 className={s.h3}>История</h3>
+                    <div>
+                        <input className={s.input} placeholder="Поиск" onChange={handleSearchQuery}
+                               value={searchQuery}/>
+                        <select value={value} className={s.select} onChange={changeSelect}>
+                            <option>По дате</option>
+                            <option>По номеру отправителя</option>
+                            <option>По номеру получателя</option>
+                        </select>
+                    </div>
                 </div>
-                <Table>
+                <Table className={s.table}>
                     <thead>
                     <tr className={"bg-light"}>
-                        <th scope="col"></th>
-                        <th scope="col" className={"text-center"}>Карта отправителя</th>
-                        <th scope="col" className={"text-center"}>Карта получателя</th>
-                        <th scope="col" className={"text-center"}>Валюта</th>
-                        <th scope="col" className={"text-center"}>Дата</th>
-                        <th scope="col" className={"text-center"}>Сумма перевода</th>
-                        <th scope="col" className={"text-center"}>Статус</th>
-                        <th scope="col"></th>
+                        <th className={s.th1} scope="col"></th>
+                        <th scope="col">Карта отправителя</th>
+                        <th scope="col">Карта получателя</th>
+                        <th scope="col">Валюта</th>
+                        <th scope="col">Дата</th>
+                        <th scope="col">Сумма перевода</th>
                     </tr>
                     </thead>
                     <HistoryLoader>
                         {sortedUsers
                             ? sortedUsers.map(h => h !== undefined && (
-                                <tbody key={h._id} className="m-2">
+                                <tbody className={s.tbody} key={h._id}>
                                 <tr>
-                                    <td className={"text-center"}>
-                                        <img
-                                            src={(h.shortName === "BNB" ? BNB : h.shortName === "AMD" ? ETM : h.shortName === "LTC" ? LTC : BTN)}/>
+                                    <td className={s.td1}>
+                                        <img className={s.img}
+                                             src={(h.shortName === "BNB" ? BNB : h.shortName === "AMD" ? ETM : h.shortName === "LTC" ? LTC : BTN)}/>
                                     </td>
-                                    <td className={"text-center"}>
-                                        <p style={{color: '#707EAE'}}>{h.numberCardSender}</p>
+                                    <td>
+                                        <p className={s.p}>{h.numberCardSender}</p>
                                     </td>
-                                    <td className={"text-center"}>
-                                        <p style={{color: '#707EAE'}}>{h.numberCardRecipient}</p>
+                                    <td>
+                                        <p className={s.p}>{h.numberCardRecipient}</p>
                                     </td>
-                                    <td className={"text-center"}>
-                                        <p style={{color: '#707EAE'}}>{h.rate}</p>
+                                    <td>
+                                        <p className={s.p}>{h.rate}</p>
                                     </td>
-                                    <td className={"text-center"}>
-                                        <p style={{color: '#707EAE'}}>{h.datetime}</p>
+                                    <td>
+                                        <p className={s.p}>{h.datetime}</p>
                                     </td>
-                                    <td className={"text-center"}>
-                                        <p style={{color: '#707EAE'}}>{h.pay}</p>
-                                    </td>
-                                    <td className={"text-center"}>
-                                        <p className={h.status === "completed" ? "text-success" : "text-danger"}>{h.status}</p>
+                                    <td>
+                                        <p className={s.p}>{h.pay}</p>
                                     </td>
                                 </tr>
                                 </tbody>

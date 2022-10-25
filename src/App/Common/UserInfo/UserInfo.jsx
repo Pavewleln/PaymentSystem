@@ -1,28 +1,32 @@
-import logo from "../../img/header/imageUserUndefined.jpg";
+import logo from "../../../img/header/imageUserUndefined.jpg";
 import {useSelector} from "react-redux";
-import {getCurrentUserData} from "../Store/users";
+import {getCurrentUserData} from "../../Store/users";
 import {FollowedUser} from "./FollowedUser";
+import s from './UserInfo.module.scss'
 
 export const UserInfo = ({p}) => {
     const currentUserData = useSelector(getCurrentUserData())
+    const firstName = p.name.split(' ').slice(0, 1).join(" ")
+    const secondName = p.name.split(' ').slice(1, 2).join(" ")
     if (currentUserData) {
         return (
             <tbody key={p._id}>
-            <tr>
-                <td className={"d-flex text-center"}>
-                    <img className={"m-2"} style={{
-                        width: '40px', height: '40px', borderRadius: '50%', lineHeight: '0', margin: '2px'
-                    }} src={p.image ? p.image : logo}/>
-                    <div style={{marginTop: '10px'}}>
-                        <p style={{fontSize: '12px', fontWeight: '500', lineHeight: '0'}}>{p.name}</p>
-                        <p style={{fontSize: '12px'}}>{p.telephone}</p>
+            <tr className={s.tr}>
+                <td className={s.profileInfo}>
+                    <img className={s.image} src={p.image ? p.image : logo}/>
+                    <div className={s.profileDescription}>
+                        <div>
+                            <p className={s.name}>{firstName}</p>
+                            <p className={s.name}>{secondName}</p>
+                        </div>
+                        <p className={s.telephone}>{p.telephone}</p>
                     </div>
                 </td>
-                <td className={"text-center"}>{p.transfer ? p.transfer : "Нет переводов"}</td>
-                <td className={"text-center"} style={{fontSize: '12px', width: '140px'}}>
+                <td className={s.td}>{p.transfer ? p.transfer : "Нет переводов"}</td>
+                <td className={s.td}>
                     {p.location}
                 </td>
-                <td className={"text-center"}>
+                <td className={s.td}>
                     <FollowedUser currentUserData={currentUserData} p={p}/>
                 </td>
             </tr>

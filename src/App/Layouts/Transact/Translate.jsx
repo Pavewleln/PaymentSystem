@@ -1,12 +1,13 @@
 import {useNavigate, useParams} from "react-router";
 import {useEffect, useState} from "react";
-import {validator} from "../Utils/validator";
-import TextField from "../Common/form/textField";
+import {validator} from "../../Utils/validator";
+import TextField from "../../Common/form/textField";
 import {useDispatch, useSelector} from "react-redux";
-import {getCreditCardsList, loadCardsList, TranslateMoney, translateMoneySuccess} from "../Store/myCreaditCard";
-import {createHistory} from "../Store/history";
-import {getCurrentUserId} from "../Store/users";
-import {createNotice} from "../Store/notice";
+import {getCreditCardsList, loadCardsList, TranslateMoney, translateMoneySuccess} from "../../Store/myCreaditCard";
+import {createHistory} from "../../Store/history";
+import {getCurrentUserId} from "../../Store/users";
+import {createNotice} from "../../Store/notice";
+import s from './Translate.module.scss'
 
 export const Translate = () => {
     const {cardId} = useParams()
@@ -87,7 +88,7 @@ export const Translate = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className={"m-auto p-5 w-50"}>
+        <form onSubmit={handleSubmit} className={s.form}>
             <TextField
                 label="Номер карты получателя"
                 type={"cardNum"}

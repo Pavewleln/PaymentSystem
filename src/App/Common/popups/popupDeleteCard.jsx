@@ -6,6 +6,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router";
 import {deletedCreditCardNotice} from "../../Store/notice";
 import {getCurrentUserId} from "../../Store/users";
+import s from './popus.module.scss'
 export const PopupDeleteCard = ({warning, cardData}) => {
     const currentUserId = useSelector(getCurrentUserId())
     const navigate = useNavigate()
@@ -17,13 +18,13 @@ export const PopupDeleteCard = ({warning, cardData}) => {
         navigate("/completed")
     }
     return (
-        <div onClick={warning} className={"p-4 m-2 position-fixed top-0 w-100 h-100 "} style={{left: '0px', backgroundColor: 'rgba(0, 0, 0, 0.4)'}}>
-            <Modal.Dialog onClick={e => e.stopPropagation()} className={"p-5 bg-white rounded-4 w-50 position-relative"}>
+        <div onClick={warning} className={s.popup}>
+            <Modal.Dialog onClick={e => e.stopPropagation()} className={s.dialog}>
                 <Modal.Header>
                     <Modal.Title>Вы точно хотите удалить эту карту?</Modal.Title>
                 </Modal.Header>
 
-                <Modal.Body className={"w-50"}>
+                <Modal.Body className={s.bodyDelete}>
                     <p> Счет будет закрыт навсегда, вы не сможете восстановить деньги, имеющиеся на карте. Вы можете перевести свои деньги на другую карту и только тогда ее удалить.</p>
                 </Modal.Body>
 

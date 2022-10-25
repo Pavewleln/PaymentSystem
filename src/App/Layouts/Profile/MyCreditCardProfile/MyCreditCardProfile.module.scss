@@ -1,0 +1,48 @@
+
+.creditCardTitle {
+  color: #5A55D2;
+  font-size: 28px;
+}
+
+.creditCardInfo {
+  position: relative;
+  color: white;
+  text-decoration: none;
+
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.image {
+  width: 250px
+}
+
+.bankName {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  font-size: 18px;
+}
+
+.paymentName {
+  position: absolute;
+  top: 10px;
+  left: 200px;
+  font-size: 16px;
+}
+
+.numberCard {
+  position: absolute;
+  top: 100px;
+  left: 20px;
+  font-size: 18px;
+}
+
+.authorName {
+  position: absolute;
+  top: 120px;
+  left: 20px;
+  font-size: 12px
+}

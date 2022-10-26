@@ -14,7 +14,7 @@ export const Users = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [searchQuery, setSearchQuery] = useState("");
     const [value, setValue] = useState("По имени");
-    const pageSize = 3;
+    const pageSize = 5;
     const changeSelect = ({target}) => {
         setValue(target.value);
         setSearchQuery('')
@@ -69,6 +69,7 @@ export const Users = () => {
                             <th className={s.th} scope="col">Имя</th>
                             <th className={s.th} scope="col">Всего переводов</th>
                             <th className={s.th} scope="col">Место жительства</th>
+                            <th scope="col"></th>
                             <th scope="col"></th>
                         </tr>
                         </thead>

@@ -36,6 +36,12 @@ export const Translate = () => {
             },
             limitMoney: {
                 message: "У вас не хватает денег"
+            },
+            isContainDigit: {
+                message: "Можно отправлять только целые числа"
+            },
+            isMoney: {
+                message: "Минимальная сумма - 10"
             }
         }
     };
@@ -109,7 +115,7 @@ export const Translate = () => {
                 type="submit"
                 disabled={!isValid}
             >
-                Submit
+                Перевести
             </button>
         </form>
     );

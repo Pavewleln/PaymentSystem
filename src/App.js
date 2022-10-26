@@ -19,6 +19,7 @@ import {Translate} from "./App/Layouts/Transact/Translate";
 import {Completed} from "./App/Common/Completed";
 import {UpdateProfile} from "./App/Layouts/Profile/UpdateProfile";
 import {Notice} from "./App/Layouts/Notice/Notice";
+import {TransactToUser} from "./App/Layouts/TransactToUser/TransactToUser";
 
 function App() {
     return (
@@ -45,6 +46,7 @@ function App() {
                                 <Route path='/notice' element={<Notice/>}/>
                                 <Route path='/logout' element={<Logout/>}/>
                                 <Route path='/translate/:cardId' element={<Translate/>}/>
+                                <Route path='/transact/:userId' element={<TransactToUser/>}/>
                                 <Route path='/createCard' element={<CreateCard/>}/>
                                 <Route path='/profile/:cardId' element={<MyCreditCardInfo/>}/>
                                 <Route path='/profile/:cardId/:edit' element={<UpdateProfile/>}/>

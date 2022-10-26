@@ -14,7 +14,7 @@ export const Followers = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [searchQuery, setSearchQuery] = useState("");
     const [value, setValue] = useState("По имени");
-    const pageSize = 3;
+    const pageSize = 5;
     const changeSelect = ({target}) => {
         setValue(target.value);
         setSearchQuery('')
@@ -79,7 +79,8 @@ export const Followers = () => {
                         <tr className={"bg-light"}>
                             <th scope="col" className={s.th} >Имя</th>
                             <th scope="col" className={s.th} >Всего переводов</th>
-                            <th scope="col" className={s.th} >Всего завершенных</th>
+                            <th scope="col" className={s.th} >Место жительства</th>
+                            <th scope="col"></th>
                             <th scope="col"></th>
                         </tr>
                         </thead>

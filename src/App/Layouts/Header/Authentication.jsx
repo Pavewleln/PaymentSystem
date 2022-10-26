@@ -49,7 +49,6 @@ export const Authentication = () => {
                 </div>
                 <div className={"d-flex"}>
                     <div className={"d-flex align-items-center"}>
-                        <h6 style={{marginRight: '10px'}}></h6>
                         <Link to={"/profile"} className={"rounded-3 overflow-hidden"}
                               style={{width: '50px', height: '50px'}}>
                         </Link>

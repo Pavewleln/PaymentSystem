@@ -23,8 +23,10 @@ export const CreateCard = () => {
     const [data, setData] = useState({
         bank: '',
         license: false,
-        format: 'electronic'
+        format: 'electronic',
+        currency: 'BTN'
     });
+    const currencyArray = ["BTN", "BNB", "LTC", "AMD"]
 
     const currentUserData = useSelector(getCurrentUserData())
     const isLoggedIn = useSelector(getIsLoggedIn());
@@ -60,9 +62,15 @@ export const CreateCard = () => {
                 message:
                     "Это поле обязательно"
             }
+        },
+        currency: {
+            isRequired: {
+                message:
+                    "Это поле обязательно"
+            }
         }
     };
-    if(!cards) {
+    if (!cards) {
         return;
     }
     if (banks) {
@@ -71,6 +79,13 @@ export const CreateCard = () => {
         const busyBanks = banks.map((c) => c.name)
         const set = new Set(myBanks);
         const allowedBanks = busyBanks.filter(item => !set.has(item))
+        const amountOfMoney = data.currency === "BTN"
+            ? 100 / 20509.40
+            : data.currency === "AMD"
+                ? 100 / 0.0025
+                : data.currency === "BNB"
+                    ? 100 / 294.42
+                    : 100 / 54.70
 
         const handleChange = (target) => {
             setData((prevState) => ({
@@ -82,7 +97,7 @@ export const CreateCard = () => {
             e.preventDefault()
             const isValid = validate();
             if (!isValid) return;
-            dispatch(createNewCard(data, currentUserData.name))
+            dispatch(createNewCard(data.bank, data.currency, currentUserData.name, amountOfMoney))
             navigate('/profile')
         }
 
@@ -90,8 +105,13 @@ export const CreateCard = () => {
             label: b,
             value: b
         }));
+        const currencyList = currencyArray.map((c) => ({
+            value: c,
+            label: c
+        }))
         return (
             <form onSubmit={handleSubmit} className={s.form}>
+                <p>После создания карты вам будет сразу же доступна валюта на сумму 100$</p>
                 <SelectField
                     label="Выбери карту"
                     defaultOption={banksList.length !== 0 ? "Можно выбрать только карту, которой у вас еще нет" : "У вас есть все карты нашего банка"}
@@ -100,6 +120,15 @@ export const CreateCard = () => {
                     error={errors.bank}
                     onChange={handleChange}
                     value={data.bank}
+                />
+                <SelectField
+                    label="Выбери валюту"
+                    defaultOption={"Выберите валюту"}
+                    options={currencyList}
+                    name="currency"
+                    error={errors.currency}
+                    onChange={handleChange}
+                    value={data.currency}
                 />
                 <RadioField
                     options={[

@@ -29,6 +29,9 @@ export const AddMoneyPopup = ({addMoney}) => {
             },
             limitMoney: {
                 message: "У вас не хватает денег"
+            },
+            isContainDigit: {
+                message: "Можно отправлять только целые числа"
             }
         }
     };
@@ -48,7 +51,7 @@ export const AddMoneyPopup = ({addMoney}) => {
         setData({
             sum: ''
         })
-        navigate("/completed")
+        navigate(-1)
     };
     const changeSelect = ({target}) => {
         setValue(target.value);
@@ -59,9 +62,26 @@ export const AddMoneyPopup = ({addMoney}) => {
     const myCardNumbers = ((cards.filter(c => c.userId === currentUserId)).filter(c => c._id !== cardId)).map(c => c.numberCard)
     const recipientCardSum = cards.filter(c => c.numberCard == value).map(c => c.amountOfMoney)
     const recipientCardId = cards.filter(c => c.numberCard == value).map(c => c._id)
+    // Конвертировать сумму в доллары
+    const recipientCardCurrency = (cards.filter(c => c.numberCard == value)).map(c => c.currency)
+    const recipientAmountOfMoney = recipientCardCurrency == "BTN"
+        ? data.sum * 20509.40
+        : recipientCardCurrency == "AMD"
+            ? data.sum * 0.0025
+            : recipientCardCurrency == "BNB"
+                ? data.sum * 294.42
+                : data.sum * 54.70
 
+    const myCardCurrency = (cards.filter(c => c._id === cardId)).map(c => c.currency)
+    const myAmountOfMoney = myCardCurrency == "BTN"
+        ? recipientAmountOfMoney / 20509.40
+        : myCardCurrency == "AMD"
+            ? recipientAmountOfMoney / 0.0025
+            : myCardCurrency == "BNB"
+                ? recipientAmountOfMoney / 294.42
+                : recipientAmountOfMoney / 54.70
     const removeCardSum = Number(recipientCardSum) >= Number(data.sum) ? Number(recipientCardSum) - Number(data.sum) : 0
-    const addCardSum = Number(recipientCardSum) >= Number(data.sum) ? Number(myCardSum) + Number(data.sum) : 0
+    const addCardSum = Number(recipientCardSum) >= Number(data.sum) ? Number(myCardSum) + myAmountOfMoney : 0
 
     const validate = () => {
         const errors = validator(data, validatorConfig, recipientCardSum, recipientCardId);

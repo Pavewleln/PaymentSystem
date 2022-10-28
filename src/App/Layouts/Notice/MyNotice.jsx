@@ -7,7 +7,7 @@ export const MyNotice = () => {
     const notice = useSelector(getNotice())
     const dispatch = useDispatch()
     const currentUserId = useSelector(getCurrentUserId())
-    const date = new Date().toLocaleString().split(",").slice(0, 1).join(' ')
+    const date = new Date().toLocaleString()
     if (notice) {
         const deleteNotice = (id) => {
             dispatch(deleteDataNotice(id))

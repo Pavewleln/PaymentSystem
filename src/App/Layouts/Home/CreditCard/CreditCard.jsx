@@ -13,7 +13,7 @@ export const CreditCard = ({cardInfo, bank}) => {
     if (myCardOfThisBank) {
         return (
             <div className={s.block}>
-                <p className={s.creditCardTitle}>{myCardOfThisBank.amountOfMoney}</p>
+                <p className={s.creditCardTitle}>{myCardOfThisBank.amountOfMoney}{" "}{myCardOfThisBank.currency}</p>
                 <Link to={`/profile/${myCardOfThisBank._id}`} className={s.creditCardInfo}>
                     <div>
                         <img className={s.image} src={card}/>

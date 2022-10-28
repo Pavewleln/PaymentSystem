@@ -6,10 +6,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 10px;
+  margin: 5px;
   color: #707EAE;
 }
 .image {
+  width: 30px;
+  height: 30px;
 }
 .rate {
   margin: auto;
@@ -35,6 +37,6 @@
     height: 25px;
   }
   .historyBlock{
-    font-size: 10px;
+    font-size: 8px;
   }
 }

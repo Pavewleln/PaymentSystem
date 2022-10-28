@@ -44,7 +44,7 @@ export const loadHistoryList = () => async (dispatch) => {
     }
 };
 
-export const createHistory = (myCardId, myMoney, recipientCardId, recipientMoney, datetime, myCardNumber, recipientCardNumber) => async (dispatch) => {
+export const createHistory = (myCardId, myMoney, recipientCardId, recipientMoney, datetime, myCardNumber, recipientCardNumber, myCardCurrency) => async (dispatch) => {
     try {
         dispatch(
             createDataHistory(
@@ -53,8 +53,14 @@ export const createHistory = (myCardId, myMoney, recipientCardId, recipientMoney
                     cardId: myCardId.join(''),
                     datetime: datetime,
                     pay: `-${myMoney}`,
-                    rate: "Bitcoin",
-                    shortName: "BTN",
+                    shortName: myCardCurrency,
+                    rate: myCardCurrency == "BTN"
+                        ? "Bitcoin"
+                        : myCardCurrency == "AMD"
+                            ? "Armenian dram"
+                            : myCardCurrency == "BNB"
+                                ? "Binance Coin"
+                                : "Litecoin",
                     status: 'completed',
                     numberCardSender: myCardNumber.join(''),
                     numberCardRecipient: recipientCardNumber.toString()
@@ -64,8 +70,14 @@ export const createHistory = (myCardId, myMoney, recipientCardId, recipientMoney
                     cardId: recipientCardId.join(''),
                     datetime: datetime,
                     pay: `+${recipientMoney}`,
-                    rate: "Bitcoin",
-                    shortName: "BTN",
+                    shortName: myCardCurrency,
+                    rate: myCardCurrency == "BTN"
+                        ? "Bitcoin"
+                        : myCardCurrency == "AMD"
+                            ? "Armenian dram"
+                            : myCardCurrency == "BNB"
+                                ? "Binance Coin"
+                                : "Litecoin",
                     status: 'completed',
                     numberCardSender: myCardNumber.join(''),
                     numberCardRecipient: recipientCardNumber.toString()

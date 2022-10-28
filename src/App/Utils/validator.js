@@ -23,7 +23,7 @@ export function validator(data, config, myCardSum, recipientCardId) {
                 break;
             }
             case "isContainDigit": {
-                const digitRegExp = /\d+$/g;
+                const digitRegExp = /\.?\d+$/g;
                 statusValidate = !digitRegExp.test(data);
                 break;
             }

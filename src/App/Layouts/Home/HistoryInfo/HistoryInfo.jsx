@@ -23,11 +23,10 @@ export const HistoryInfo = ({historyCardForId}) => {
             <div className={s.historyInfo}>
                 {sortedHistory.map((h) => (
                     <div key={h._id} className={s.historyBlock}>
-                        <img className={s.image} src={(h.shortName === "BNB" ? BNB : h.shortName === "AMD" ? ETM : h.shortName === "LTC" ? LTC : BTN)}/>
-                        <p className={s.rate}>{h.rate}</p>
+                        <img className={s.image} src={(h.shortName.join(' ') === "BNB" ? BNB : h.shortName.join(' ') === "AMD" ? ETM : h.shortName.join(' ') === "LTC" ? LTC : BTN)}/>
+                        <p className={s.rate}>{h.shortName}</p>
                         <p className={s.datetime}>{h.datetime}</p>
                         <p className={s.pay}>{h.pay}</p>
-                        <p style={{margin: 'auto'}} className={h.status === "completed" ? "text-success" : "text-danger"}>{h.status}</p>
                     </div>))}
             </div>
         ) : (

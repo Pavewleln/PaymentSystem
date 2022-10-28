@@ -45,8 +45,8 @@ export const TransactToUser = () => {
         const isValid = validate();
         if (!isValid) return;
         dispatch(TranslateMoney(myCardId[0], removeCardSum, firstRecipientCardId, addCardSum))
-        dispatch(createHistory(myCardId, Number(data.sum), [firstRecipientCardId], Number(data.sum), date, myCardNumber, recipientCardNumber[0]))
-        dispatch(createNotice(currentUserId, Number(data.sum), recipientCardAuthorName, Number(data.sum), date, myCardNumber[0], recipientCardNumber[0]))
+        dispatch(createHistory(myCardId, Number(data.sum), [firstRecipientCardId], recipientAmountOfMoney, date, myCardNumber, recipientCardNumber[0], myCardCurrency))
+        dispatch(createNotice(currentUserId, Number(data.sum), recipientCardAuthorName, recipientAmountOfMoney, date, myCardNumber[0], recipientCardNumber[0]))
         setData({
             sum: ''
         })
@@ -59,20 +59,36 @@ export const TransactToUser = () => {
     const myCardSum = (cards.filter(c => c.numberCard === Number(value))).map(c => c.amountOfMoney)
     const myCardNumbers = (cards.filter(c => c.userId === currentUserId)).map(c => c.numberCard)
     const removeCardSum = Number(myCardSum) >= Number(data.sum) ? Number(myCardSum) - Number(data.sum) : 0
+    const myCardCurrency = (cards.filter(c => c.numberCard === Number(value))).map(c => c.currency)
+    const myAmountOfMoney = myCardCurrency === "BTN"
+        ? data.sum * 20509.40
+        : myCardCurrency === "AMD"
+            ? data.sum * 0.0025
+            : myCardCurrency === "BNB"
+                ? data.sum * 294.42
+                : data.sum * 54.70
 
     const recipientCardId = (cards.filter(c => c.userId === userId)).map(c => c._id)
     const recipientCardNumber = (cards.filter(c => c.userId === userId)).map(c => c.numberCard)
     const firstRecipientCardId = recipientCardId[0]
     const recipientCardSum = (cards.filter(c => c.userId === userId)).map(c => c.amountOfMoney)
     const recipientCardAuthorName = (cards.filter(c => c.userId === userId)).map(c => c.userId)
-    const addCardSum = Number(myCardSum) >= Number(data.sum) ? Number(recipientCardSum[0]) + Number(data.sum) : 0
+    // Конвертировать сумму в валюту счета получателя
+    const recipientCardCurrency = (cards.filter(c => c.userId === userId)).map(c => c.currency)
+    const recipientAmountOfMoney = recipientCardCurrency == "BTN"
+        ? myAmountOfMoney / 20509.40
+        : recipientCardCurrency == "AMD"
+            ? myAmountOfMoney / 0.0025
+            : recipientCardCurrency == "BNB"
+                ? myAmountOfMoney / 294.42
+                : myAmountOfMoney / 54.70
+    const addCardSum = Number(myCardSum) >= Number(data.sum) ? Number(recipientCardSum[0]) + recipientAmountOfMoney : 0
     const validate = () => {
         const errors = validator(data, validatorConfig, myCardSum);
         setErrors(errors);
         return Object.keys(errors).length === 0;
     };
     const isValid = Object.keys(errors).length === 0;
-
     const handleChange = (target) => {
         setData((prevState) => ({
             ...prevState,

@@ -88,11 +88,11 @@ export const MyHistory = () => {
                     <thead>
                     <tr className={"bg-light"}>
                         <th className={s.th1} scope="col"></th>
-                        <th scope="col">Карта отправителя</th>
-                        <th scope="col">Карта получателя</th>
-                        <th scope="col">Валюта</th>
-                        <th scope="col">Дата</th>
-                        <th scope="col">Сумма перевода</th>
+                        <th className={"text-center"} scope="col">Карта отправителя</th>
+                        <th className={"text-center"} scope="col">Карта получателя</th>
+                        <th className={"text-center"} scope="col">Валюта</th>
+                        <th className={"text-center"} scope="col">Дата</th>
+                        <th className={"text-center"} scope="col">Сумма перевода</th>
                     </tr>
                     </thead>
                     <HistoryLoader>
@@ -102,7 +102,7 @@ export const MyHistory = () => {
                                 <tr>
                                     <td className={s.td1}>
                                         <img className={s.img}
-                                             src={(h.shortName === "BNB" ? BNB : h.shortName === "AMD" ? ETM : h.shortName === "LTC" ? LTC : BTN)}/>
+                                             src={(h.shortName.join('') === "BNB" ? BNB : h.shortName.join('') === "AMD" ? ETM : h.shortName.join('') === "LTC" ? LTC : BTN)}/>
                                     </td>
                                     <td>
                                         <p className={s.p}>{h.numberCardSender}</p>
@@ -111,7 +111,7 @@ export const MyHistory = () => {
                                         <p className={s.p}>{h.numberCardRecipient}</p>
                                     </td>
                                     <td>
-                                        <p className={s.p}>{h.rate}</p>
+                                        <p className={s.p}>{h.shortName}</p>
                                     </td>
                                     <td>
                                         <p className={s.p}>{h.datetime}</p>

@@ -28,7 +28,7 @@ export const MyCreditCardInfo = () => {
     )
     return cardData ? (
         <div>
-            Счет: {cardData.amountOfMoney}
+            Счет: {cardData.amountOfMoney}{" "}{cardData.currency}
             <div style={{position: 'relative'}}>
                 <img style={{width: '250px'}} src={card}/>
                 <p className={"text-white"}

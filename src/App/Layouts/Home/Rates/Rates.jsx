@@ -1,12 +1,11 @@
 import {Line, LineChart} from "recharts";
-import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import convert from '../../../../img/convert.svg'
 import BTN from '../../../../img/BTN.png'
 import LTC from '../../../../img/LTM.png'
 import ETM from '../../../../img/ETM.png'
 import BNB from '../../../../img/BNB.png'
-import {getRates, loadRatesList} from "../../../Store/rates";
+import {getRates} from "../../../Store/rates";
 import s from './Rates.module.scss'
 
 export const Rates = () => {

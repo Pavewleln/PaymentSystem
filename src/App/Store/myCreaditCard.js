@@ -93,13 +93,14 @@ export const TranslateMoney = (myCardId, myMoney, recipientCardId, recipientMone
     }
 }
 
-export const createNewCard = (data, authorName) => async (dispatch, getState) => {
+export const createNewCard = (bank, currency, authorName, amountOfMoney) => async (dispatch, getState) => {
     const dateCreated = (new Date().toLocaleString().split(",").slice(0, 1).join(' ')).split('.').slice(0, 2).join('/')
     const newCard = {
         _id: nanoid(),
-        amountOfMoney: 500,
+        amountOfMoney: amountOfMoney,
         authorName: authorName,
-        bank: data.bank,
+        bank: bank,
+        currency: currency,
         created_at: Date.now(),
         dateOfCreation: dateCreated,
         numberCard: randomInt(2000000000000000, 5000000000000000),

@@ -48,8 +48,32 @@ td {
 .tbody {
     margin: 20px;
 }
+@media(max-width: 1220px) {
+    .input {
+        background: white;
+        border: 1px solid black;
+        border-radius: 10px;
+        margin: 20px;
+        padding-left: 10px;
+        padding-top: 12px;
+        padding-right: 80px;
+        padding-bottom: 12px;
+        font-size: 14px;
+    }
 
-@media (max-width: 1025px) {
+    .select {
+        background: white;
+        border: 1px solid black;
+        border-radius: 10px;
+        margin: 0px;
+        padding-left: 10px;
+        padding-top: 13px;
+        padding-right: 0px;
+        padding-bottom: 13px;
+        font-size: 14px;
+    }
+}
+@media (max-width: 1150px) {
     .history {
         padding: 10px;
         background: white;
@@ -71,7 +95,7 @@ td {
         font-size: 16px;
     }
 
-    td {
+    >td {
         font-size: 14px;
     }
 
@@ -109,7 +133,7 @@ td {
     }
 }
 
-@media (max-width: 769px) {
+@media (max-width: 1050px) {
     .history {
         padding: 10px;
         background: white;
@@ -132,7 +156,7 @@ td {
         font-size: 12px;
     }
 
-    td {
+    >td {
         font-size: 8px;
     }
 
@@ -172,16 +196,29 @@ td {
     .table {
     }
 }
-
-@media (max-width: 426px) {
+@media(max-width: 990px) {
     th {
         font-size: 10px;
     }
-
+    td {
+        font-size: 10px;
+    }
+}
+@media(max-width: 800px) {
+    th {
+        font-size: 10px;
+    }
     td {
         font-size: 8px;
     }
-
+}
+@media(max-width: 720px) {
+    .th1{
+        display: none;
+    }
+    .td1{
+        display: none;
+    }
     .input {
         background: white;
         border: 1px solid black;
@@ -207,7 +244,7 @@ td {
     }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 460px) {
     .h3 {
         font-size: 16px;
     }
@@ -219,38 +256,8 @@ td {
     td {
         font-size: 8px;
     }
-
-    .input {
-        background: white;
-        border: 1px solid black;
-        border-radius: 10px;
-        margin: 5px;
-        padding-left: 5px;
-        padding-top: 6px;
-        padding-right: 0;
-        padding-bottom: 6px;
-        font-size: 12px;
-    }
-
-    .select {
-        background: white;
-        border: 1px solid black;
-        border-radius: 10px;
-        margin: 5px;
-        padding-left: 0;
-        padding-top: 6px;
-        padding-right: 0;
-        padding-bottom: 6px;
-        font-size: 12px;
-    }
-    .th1{
-        display: none;
-    }
-    .td1{
-        display: none;
-    }
 }
-@media(max-width: 361px) {
+@media(max-width: 430px) {
     .h3 {
         font-size: 16px;
     }

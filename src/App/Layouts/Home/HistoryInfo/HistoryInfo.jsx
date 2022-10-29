@@ -6,6 +6,7 @@ import LTC from "../../../../img/LTM.png";
 import BTN from "../../../../img/BTN.png";
 import _ from "lodash";
 import s from './HistoryInfo.module.scss'
+import {Table} from "react-bootstrap";
 
 export const HistoryInfo = ({historyCardForId}) => {
     const history = useSelector(getHistory())
@@ -21,13 +22,34 @@ export const HistoryInfo = ({historyCardForId}) => {
         const sortedHistory = handleSort()
         return sortedHistory.length !== 0 ? (
             <div className={s.historyInfo}>
-                {sortedHistory.map((h) => (
-                    <div key={h._id} className={s.historyBlock}>
-                        <img className={s.image} src={(h.shortName.join(' ') === "BNB" ? BNB : h.shortName.join(' ') === "AMD" ? ETM : h.shortName.join(' ') === "LTC" ? LTC : BTN)}/>
-                        <p className={s.rate}>{h.shortName}</p>
-                        <p className={s.datetime}>{h.datetime}</p>
-                        <p className={s.pay}>{h.pay}</p>
-                    </div>))}
+                <Table>
+                    <thead>
+                    <tr className={"bg-light"}>
+                        <th scope="col"></th>
+                        <th className={"text-center"} scope="col">Валюта отправителя</th>
+                        <th className={"text-center"} scope="col">Дата</th>
+                        <th className={"text-center"} scope="col">Сумма перевода</th>
+                    </tr>
+                    </thead>
+                    {sortedHistory.map((h) => (
+                        <tbody key={h._id} className={s.tbody}>
+                        <tr>
+                            <td>
+                                <img className={s.image}
+                                     src={(h.shortName.join(' ') === "BNB" ? BNB : h.shortName.join(' ') === "AMD" ? ETM : h.shortName.join(' ') === "LTC" ? LTC : BTN)}/>
+                            </td>
+                            <td>
+                                <p className={s.rate}>{h.shortName}</p>
+                                </td>
+                            <td>
+                                <p className={s.datetime}>{h.datetime}</p>
+                            </td>
+                            <td>
+                                <p className={s.pay}>{h.pay}</p>
+                            </td>
+                        </tr>
+                        </tbody>))}
+                </Table>
             </div>
         ) : (
             <div>

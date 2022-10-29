@@ -39,7 +39,7 @@
     width: 30%;
   }
 }
-@media(max-width: 850px) {
+@media(max-width: 950px) {
   .home {
     width: 100%;
     display: flex;
@@ -59,6 +59,12 @@
     width: 95%;
     margin: auto;
     margin-bottom: 10px;
+  }
+  .historyCard {
+    font-size: 16px;
+  }
+  .historyCardDescription {
+    font-size: 10px;
   }
 }
 @media(max-width: 375px) {

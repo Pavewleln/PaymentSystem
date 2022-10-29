@@ -23,7 +23,7 @@ export function validator(data, config, myCardSum, recipientCardId) {
                 break;
             }
             case "isContainDigit": {
-                const digitRegExp = /\.?\d+$/g;
+                const digitRegExp = /^\d[\d.?]*$/g;
                 statusValidate = !digitRegExp.test(data);
                 break;
             }
@@ -40,7 +40,7 @@ export function validator(data, config, myCardSum, recipientCardId) {
                 break;
             }
             case "isMoney": {}
-                statusValidate = Number(data) < 10;
+                statusValidate = Number(data) === 0;
                 break;
             default:
                 break;

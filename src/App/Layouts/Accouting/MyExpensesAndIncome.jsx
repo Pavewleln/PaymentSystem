@@ -31,7 +31,7 @@ export const MyExpensesAndIncome = () => {
         const historyPaysForAllLife = historyArr.map(p => p && Number(p.pay))
         if(!historyPaysForAllLife || historyPaysForAllLife.length === 0) return "У вас нет ни одного перевода"
         // console.log(historyPaysForAllLife)
-        // Вся сумма за всю жизнь
+        // Вся сумма за все время
         const historyPaysSumPositiveForAllLife = (historyPaysForAllLife.map((p) => p > 0 ? p : 0))?.reduce((a, b) => a + b)
         const historyPaysSumNegativeForAllLife = (historyPaysForAllLife.map((p) => p < 0 ? p : 0))?.reduce((a, b) => a + b)
         // console.log("За все время", historyPaysSumPositiveForAllLife, historyPaysSumNegativeForAllLife)

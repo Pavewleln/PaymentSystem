@@ -32,6 +32,9 @@ export const AddMoneyPopup = ({addMoney}) => {
             },
             isContainDigit: {
                 message: "Можно отправлять только целые числа"
+            },
+            isMoney: {
+                message: "Нельзя отправлять 0"
             }
         }
     };

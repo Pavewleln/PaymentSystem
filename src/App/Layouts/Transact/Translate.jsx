@@ -39,6 +39,9 @@ export const Translate = () => {
             },
             isContainDigit: {
                 message: "Можно отправлять только целые числа"
+            },
+            isMoney: {
+                message: "Нельзя отправлять 0"
             }
         }
     };
@@ -56,7 +59,7 @@ export const Translate = () => {
         if (!isValid) return;
         dispatch(TranslateMoney(myCardId, removeCardSum, recipientCardId, addCardSum))
         dispatch(createHistory(myCardId, Number(data.sum), recipientCardId, recipientAmountOfMoney, date, myCardNumber, Number(data.recipient), myCardCurrency))
-        dispatch(createNotice(currentUserId, Number(data.sum), recipientCardAuthorName, recipientAmountOfMoney, date, myCardNumber, Number(data.recipient)))
+        dispatch(createNotice(currentUserId, Number(data.sum), recipientCardAuthorName, recipientAmountOfMoney, date, myCardNumber, Number(data.recipient), myCardCurrency, recipientCardCurrency))
         setData({
             recipient: '',
             sum: ''

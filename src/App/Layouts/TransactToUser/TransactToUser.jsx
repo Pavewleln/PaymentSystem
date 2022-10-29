@@ -29,6 +29,9 @@ export const TransactToUser = () => {
             },
             limitMoney: {
                 message: "У вас не хватает денег"
+            },
+            isMoney: {
+                message: "Нельзя отправлять 0"
             }
         }
     };
@@ -46,7 +49,7 @@ export const TransactToUser = () => {
         if (!isValid) return;
         dispatch(TranslateMoney(myCardId[0], removeCardSum, firstRecipientCardId, addCardSum))
         dispatch(createHistory(myCardId, Number(data.sum), [firstRecipientCardId], recipientAmountOfMoney, date, myCardNumber, recipientCardNumber[0], myCardCurrency))
-        dispatch(createNotice(currentUserId, Number(data.sum), recipientCardAuthorName, recipientAmountOfMoney, date, myCardNumber[0], recipientCardNumber[0]))
+        dispatch(createNotice(currentUserId, Number(data.sum), recipientCardAuthorName, recipientAmountOfMoney, date, myCardNumber[0], recipientCardNumber[0], myCardCurrency, recipientCardCurrency))
         setData({
             sum: ''
         })

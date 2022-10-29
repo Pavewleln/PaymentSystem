@@ -53,19 +53,19 @@ export const loadNoticeList = () => async (dispatch) => {
         dispatch(noticeRequestFailed(error.message))
     }
 }
-export const createNotice = (myUserId, myMoney, recipientUserId, recipientMoney, datetime, myCardNumber, recipientCardNumber) => async (dispatch) => {
+export const createNotice = (myUserId, myMoney, recipientUserId, recipientMoney, datetime, myCardNumber, recipientCardNumber, myCurrency, recipientCurrency) => async (dispatch) => {
     try {
         dispatch(
             createDataNotice({
                 _id: nanoid(),
                 userId: myUserId,
                 datetime: datetime,
-                text: `С карты ${myCardNumber}, была переведена на карту ${recipientCardNumber} сумма ${myMoney}`
+                text: `С карты ${myCardNumber}, была переведена на карту ${recipientCardNumber} сумма ${myMoney} ${myCurrency}`
             }, {
                 _id: nanoid(),
                 userId: recipientUserId.join(''),
                 datetime: datetime,
-                text: `Ваша карта ${recipientCardNumber} была пополнена с карты ${myCardNumber} на сумму ${myMoney}`
+                text: `Ваша карта ${recipientCardNumber} была пополнена с карты ${myCardNumber} на сумму ${recipientMoney} ${recipientCurrency}`
             })
         );
     } catch (error) {

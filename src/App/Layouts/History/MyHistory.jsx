@@ -90,7 +90,7 @@ export const MyHistory = () => {
                         <th className={s.th1} scope="col"></th>
                         <th className={"text-center"} scope="col">Карта отправителя</th>
                         <th className={"text-center"} scope="col">Карта получателя</th>
-                        <th className={"text-center"} scope="col">Валюта</th>
+                        <th className={"text-center"} scope="col">Валюта отправителя</th>
                         <th className={"text-center"} scope="col">Дата</th>
                         <th className={"text-center"} scope="col">Сумма перевода</th>
                     </tr>

@@ -40,8 +40,32 @@
 .th {
   text-align: center;
 }
+@media(max-width: 1220px) {
+  .input {
+    background: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 20px;
+    padding-left: 10px;
+    padding-top: 12px;
+    padding-right: 80px;
+    padding-bottom: 12px;
+    font-size: 14px;
+  }
 
-@media (max-width: 1025px) {
+  .select {
+    background: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 0px;
+    padding-left: 10px;
+    padding-top: 13px;
+    padding-right: 0px;
+    padding-bottom: 13px;
+    font-size: 14px;
+  }
+}
+@media (max-width: 1125px) {
   .users {
     padding: 10px;
     background: white;
@@ -83,7 +107,7 @@
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
   .users {
     padding: 10px;
     background: white;

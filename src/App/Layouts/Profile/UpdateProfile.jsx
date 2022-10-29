@@ -114,7 +114,7 @@ export const UpdateProfile = () => {
     return (
         <div className="container">
             <div className="row m-3">
-                <div className="col-md-6 offset-md-3 shadow p-4 p-2 rounded-4 bg-white">
+                <div className="col-md-7 offset-md-3 shadow p-4 p-2 rounded-4 bg-white">
                     {!isLoading ? (
                         <form onSubmit={handleSubmit}>
                             <TextField

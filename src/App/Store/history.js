@@ -53,7 +53,7 @@ export const createHistory = (myCardId, myMoney, recipientCardId, recipientMoney
                     cardId: myCardId.join(''),
                     datetime: datetime,
                     pay: `-${myMoney}`,
-                    shortName: myCardCurrency,
+                    shortName: myCardCurrency.join(''),
                     rate: myCardCurrency == "BTN"
                         ? "Bitcoin"
                         : myCardCurrency == "AMD"
@@ -70,7 +70,7 @@ export const createHistory = (myCardId, myMoney, recipientCardId, recipientMoney
                     cardId: recipientCardId.join(''),
                     datetime: datetime,
                     pay: `+${recipientMoney}`,
-                    shortName: myCardCurrency,
+                    shortName: myCardCurrency.join(''),
                     rate: myCardCurrency == "BTN"
                         ? "Bitcoin"
                         : myCardCurrency == "AMD"

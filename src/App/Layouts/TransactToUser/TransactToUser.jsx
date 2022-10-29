@@ -90,7 +90,7 @@ export const TransactToUser = () => {
                 : myAmountOfMoney / 54.70
     const addCardSum = Number(myCardSum) >= Number(data.sum) ? Number(recipientCardSum[0]) + recipientAmountOfMoney : 0
     const validate = () => {
-        const errors = validator(data, validatorConfig, myCardSum);
+        const errors = validator(data, validatorConfig, myCardSum, recipientCardId);
         setErrors(errors);
         return Object.keys(errors).length === 0;
     };

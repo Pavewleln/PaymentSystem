@@ -18,9 +18,8 @@ export const Authentication = () => {
     useEffect(() => {
         dispatch(loadNoticeList());
     }, [creditCardsList]);
-    if (currentUser && notice) {
+    if (currentUser) {
         const firstName = currentUser.name.split(' ').slice(0, 1).join(" ")
-        const myNotice = notice.filter((n) => n !== undefined && n.userId === currentUserId)
         return (
             <div className={s.authentication}>
                 <div>
@@ -30,7 +29,11 @@ export const Authentication = () => {
                 <div className={s.authenticationRight}>
                     <Link to={"/notice"} className={s.notice}>
                         <BsBell/>
-                        {myNotice.length > 0 && <div className={s.noticeLength}></div>}
+                        {notice &&
+                        notice.filter((n) => n !== undefined && n.userId === currentUserId).length > 0?
+                            <div className={s.noticeLength}></div>
+                            : null
+                        }
                     </Link>
                     <div className={s.profileName}>
                         <Link to={"/profile"} className={s.profile}>

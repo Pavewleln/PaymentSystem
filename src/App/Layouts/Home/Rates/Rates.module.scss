@@ -2,15 +2,16 @@
   display: flex;
 }
 .rate {
-  padding: 20px;
-  margin: 20px;
+  min-width: 300px;
+  padding: 5px;
+  margin: 10px;
   border-radius: 10px;
   display: flex;
   align-items: center;
   background: white;
 }
 .rateLeft {
-  padding: 20px;
+  padding: 10px;
 }
 .usd {
   font-size: 16px;
@@ -21,5 +22,150 @@
   line-height: 0;
 }
 .rateRight{
-  padding: 20px;
+  padding: 10px;
+}
+@media(max-width: 1560px) {
+  .rates {
+    overflow: auto;
+    width: 1200px;
+  }
+}
+@media(max-width: 1495px) {
+  .rates {
+    overflow: auto;
+    width: 1100px;
+  }
+}
+@media(max-width: 1400px) {
+  .rates {
+    overflow: auto;
+    width: 1000px;
+  }
+}
+@media(max-width: 1310px) {
+  .rates {
+    overflow: auto;
+    width: 900px;
+  }
+}
+@media(max-width: 1210px) {
+  .rates {
+    overflow: auto;
+    width: 800px;
+  }
+}
+@media(max-width: 1100px) {
+  .rates {
+    overflow: auto;
+    width: 700px;
+  }
+}
+@media(max-width: 1000px) {
+  .rates {
+    overflow: auto;
+    width: 600px;
+  }
+}
+@media(max-width: 950px) {
+  .rates {
+    margin-left: 15px;
+  }
+}
+@media(max-width: 900px) {
+  .rates {
+    overflow: auto;
+    width: 500px;
+    height: 170px;
+  }
+  .rate {
+    min-width: 250px;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 10px;
+    display: flex;
+    background: white;
+  }
+  .rateLeft {
+    padding: 5px;
+  }
+  .usd {
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  .value {
+    font-size: 18px;
+    line-height: 0;
+  }
+  .rateRight{
+    padding: 5px;
+  }
+}
+@media(max-width: 805px) {
+  .rates {
+    width: 400px;
+  }
+}
+@media(max-width: 700px) {
+  .rates {
+    width: 465px;
+  }
+}
+@media(max-width: 690px) {
+  .rates {
+    width: 400px;
+  }
+}
+@media(max-width: 630px) {
+  .rates {
+    width: 370px;
+  }
+}
+@media(max-width: 600px) {
+  .rates {
+    width: 530px;
+  }
+}
+@media(max-width: 580px) {
+  .rates {
+    width: 500px;
+  }
+}
+@media(max-width: 540px) {
+  .rates {
+    width: 450px;
+  }
+}
+@media(max-width: 490px) {
+  .rates {
+    width: 400px;
+  }
+}
+@media(max-width: 450px) {
+  .rates {
+    margin-left: 15px;
+    width: 350px;
+  }
+}
+@media(max-width: 390px) {
+  .rates {
+    width: 91%;
+  }
+}
+@media(max-width: 370px) {
+  .rates {
+    margin-left: 5px;
+    width: 300px;
+  }
+}
+@media(max-width: 335px) {
+  .rates {
+    margin-left: 5px;
+    width: 270px;
+  }
+}
+@media(max-width: 290px) {
+  .rates {
+    margin-left: 5px;
+    width: 250px;
+  }
 }

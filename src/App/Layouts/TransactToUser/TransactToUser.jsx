@@ -30,6 +30,9 @@ export const TransactToUser = () => {
             limitMoney: {
                 message: "У вас не хватает денег"
             },
+            isContainDigitDot: {
+                message: "Можно отправлять только целые числа"
+            },
             isMoney: {
                 message: "Нельзя отправлять 0"
             }
@@ -101,14 +104,14 @@ export const TransactToUser = () => {
     const changeSelect = ({target}) => {
         setValue(target.value);
     }
+    if(myCardNumbers.length < 1) return "Для того, чтобы перевести деньги, заведите карту"
 
     return recipientCardId.length > 0 ? (
         <form onSubmit={handleSubmit} className={s.form}>
             <h5>Перевод пользователю {user.name}</h5>
-            {myCardNumbers.length < 1
-                ? <div>У вас только одна карта</div>
+            {myCardNumbers.length === 1
+                ? <div>Номер вашей карты: {myCardNumbers}</div>
                 : <div>
-                    <p>Выберите карту</p>
                     <select value={value} className={s.select} onChange={changeSelect}>
                         <option>Выберите карту</option>
                         {myCardNumbers.map((c) => (

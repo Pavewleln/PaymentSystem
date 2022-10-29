@@ -15,13 +15,13 @@ export const Wallet = () => {
             </div>
         ) : (
             <div>
-                <h6>У вас еще нет карты, хотите <Link to={"/createCard"}>Создать</Link>?</h6>
+                <h6>У вас еще нет карты, хотите <Link to={"/createCard"}>создать</Link>?</h6>
             </div>
         )
     } else {
         return (
             <div>
-                <h6>У вас еще нет карты, хотите <Link to={"/createCard"}>Создать</Link>?</h6>
+                <h6>У вас еще нет карты, хотите <Link to={"/createCard"}>создать</Link>?</h6>
             </div>
         )
     }

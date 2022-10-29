@@ -30,7 +30,7 @@ export const AddMoneyPopup = ({addMoney}) => {
             limitMoney: {
                 message: "У вас не хватает денег"
             },
-            isContainDigit: {
+            isContainDigitDot: {
                 message: "Можно отправлять только целые числа"
             },
             isMoney: {

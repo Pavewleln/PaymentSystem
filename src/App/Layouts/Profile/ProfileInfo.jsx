@@ -34,7 +34,7 @@ export const ProfileInfo = () => {
                     <Link to={'/logout'} className={s.logout}>Выйти
                         из аккаунта</Link>
                 </div>
-                {cards.filter((p) => p.userId === currentUserId)
+                {cards.filter((p) => p.userId === currentUserId).length !== 0
                     ? (
                         <div className={s.cards}>
                             {(cards.filter((p) => p.userId === currentUserId)).map((c) => (
@@ -43,7 +43,7 @@ export const ProfileInfo = () => {
                         </div>
                     )
                     : (
-                        "У вас пока нет карты нашего банка"
+                        <h6>У вас еще нет карты, хотите <Link to={"/createCard"}>создать</Link>?</h6>
                     )
                 }
             </div>

@@ -37,6 +37,9 @@ export const Translate = () => {
             limitMoney: {
                 message: "У вас не хватает денег"
             },
+            isMaxLength: {
+                message: "Длина суммы не может превышать длину счета"
+            },
             isContainDigitDot: {
                 message: "Можно отправлять только целые числа"
             },
@@ -112,6 +115,7 @@ export const Translate = () => {
 
     return (
         <form onSubmit={handleSubmit} className={s.form}>
+            <p>Счет карты: {myCardSum} {myCardCurrency}</p>
             <TextField
                 label={"Номер карты получателя"}
                 type={"cardNum"}
@@ -123,6 +127,7 @@ export const Translate = () => {
             <TextField
                 label={`Сумма перевода (${myCardCurrency}   )`}
                 name="sum"
+                placeholder={"100.00"}
                 value={data.sum}
                 onChange={handleChange}
                 error={errors.sum}

@@ -33,6 +33,9 @@ export const TransactToUser = () => {
             isContainDigitDot: {
                 message: "Можно отправлять только целые числа"
             },
+            isMaxLength: {
+                message: "Длина суммы не может превышать длину счета"
+            },
             isMoney: {
                 message: "Нельзя отправлять 0"
             }

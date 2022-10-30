@@ -48,6 +48,9 @@ export function validator(data, config, myCardSum, recipientCardId) {
                 statusValidate = Number(data) === 0;
                 break;
             }
+            case "isMaxLength": {
+                statusValidate = myCardSum.join(' ').length < data.length
+            }
             default:
                 break;
         }

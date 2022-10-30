@@ -33,6 +33,9 @@ export const AddMoneyPopup = ({addMoney}) => {
             isContainDigitDot: {
                 message: "Можно отправлять только целые числа"
             },
+            isMaxLength: {
+                message: "Длина суммы не может превышать длину счета"
+            },
             isMoney: {
                 message: "Нельзя отправлять 0"
             }
@@ -102,7 +105,7 @@ export const AddMoneyPopup = ({addMoney}) => {
     };
     return (
         <div onClick={addMoney} className={s.popup}>
-            {myCardNumbers.length < 2
+            {myCardNumbers.length < 1
                 ? <Modal.Dialog onClick={e => e.stopPropagation()} className={s.dialog}>
                     <Modal.Body className={s.body}>
                     <p>
@@ -132,9 +135,11 @@ export const AddMoneyPopup = ({addMoney}) => {
                                     ))}
                                 </select>
                             </div>
+                            <p>Счет карты: {recipientCardSum} {recipientCardCurrency}</p>
                             <TextField
                                 label="Сумма перевода"
                                 name="sum"
+                                placeholder={"100.00"}
                                 value={data.sum}
                                 onChange={handleChange}
                                 error={errors.sum}

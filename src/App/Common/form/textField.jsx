@@ -8,7 +8,7 @@ const TextField = ({label, type, name, value, onChange, error, placeholder}) => 
         if (type === "tel") {
             onChange({name: target.name, value: formatPhoneNumber(target.value)});
         } else {
-            onChange({name: target.name, value: target.value});
+            onChange({name: target.name, value: target.value})
         }
     };
     const formatPhoneNumber = (value) => {

@@ -102,7 +102,7 @@ export const MyHistory = () => {
                                 <tr>
                                     <td className={s.td1}>
                                         <img className={s.img}
-                                             src={(h.shortName.join('') === "BNB" ? BNB : h.shortName.join('') === "AMD" ? ETM : h.shortName.join('') === "LTC" ? LTC : BTN)}/>
+                                             src={(h.shortName === "BNB" ? BNB : h.shortName === "AMD" ? ETM : h.shortName === "LTC" ? LTC : BTN)}/>
                                     </td>
                                     <td>
                                         <p className={s.p}>{h.numberCardSender}</p>

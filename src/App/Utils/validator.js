@@ -41,7 +41,7 @@ export function validator(data, config, myCardSum, recipientCardId) {
                 break;
             }
             case "limitMoney": {
-                statusValidate = Number(myCardSum) < Number(data);
+                statusValidate = Number(myCardSum) <= Number(data);
                 break;
             }
             case "isMoney": {
@@ -49,7 +49,7 @@ export function validator(data, config, myCardSum, recipientCardId) {
                 break;
             }
             case "isMaxLength": {
-                statusValidate = myCardSum.join(' ').length < data.length
+                statusValidate = myCardSum.join(' ').length < 10 || myCardSum.join(' ').length < data.length -3
             }
             default:
                 break;

@@ -36,7 +36,7 @@ export const HistoryInfo = ({historyCardForId}) => {
                         <tr>
                             <td>
                                 <img className={s.image}
-                                     src={(h.shortName.join(' ') === "BNB" ? BNB : h.shortName.join(' ') === "AMD" ? ETM : h.shortName.join(' ') === "LTC" ? LTC : BTN)}/>
+                                     src={(h.shortName === "BNB" ? BNB : h.shortName === "AMD" ? ETM : h.shortName === "LTC" ? LTC : BTN)}/>
                             </td>
                             <td>
                                 <p className={s.rate}>{h.shortName}</p>

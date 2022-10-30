@@ -125,7 +125,7 @@ export const Translate = () => {
                 error={errors.recipient}
             />
             <TextField
-                label={`Сумма перевода (${myCardCurrency}   )`}
+                label={`Сумма перевода (${myCardCurrency})`}
                 name="sum"
                 placeholder={"100.00"}
                 value={data.sum}

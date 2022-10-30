@@ -58,6 +58,7 @@ export const AddMoneyPopup = ({addMoney}) => {
     };
     const changeSelect = ({target}) => {
         setValue(target.value);
+        setData({sum: ''})
     }
     if (!cards) return "loading"
     const myCardId = (cards.filter(c => c._id === cardId)).map(c => c._id)
@@ -101,46 +102,57 @@ export const AddMoneyPopup = ({addMoney}) => {
     };
     return (
         <div onClick={addMoney} className={s.popup}>
-            <Modal.Dialog onClick={e => e.stopPropagation()} className={s.dialog}>
-                <Modal.Header>
-                    <Modal.Title>Пополнение карты</Modal.Title>
-                </Modal.Header>
+            {myCardNumbers.length < 2
+                ? <Modal.Dialog onClick={e => e.stopPropagation()} className={s.dialog}>
+                    <Modal.Body className={s.body}>
+                    <p>
+                        У вас только одна карта
+                    </p>
+                    </Modal.Body>
+                    <Modal.Footer className={s.prev}>
+                        <Button variant="secondary" onClick={addMoney}>Отмена</Button>
+                    </Modal.Footer>
+                </Modal.Dialog>
+                : <Modal.Dialog onClick={e => e.stopPropagation()} className={s.dialog}>
+                    <Modal.Header>
+                        <Modal.Title>Пополнение карты</Modal.Title>
+                    </Modal.Header>
 
-                <Modal.Body className={s.body}>
-                    <p className={s.bodyText}>Вы можете пополнить карту только с других своих карт или попросите друга. Данные о переводах
-                        между своими картами не остаются в истории</p>
-                    <form onSubmit={handleSubmit} className={s.form}>
-                        {myCardNumbers.length < 1
-                            ? <div>У вас только одна карта</div>
-                            : <div>
-                                <p>Выберите карту</p>
+                    <Modal.Body className={s.body}>
+                        <p className={s.bodyText}>Вы можете пополнить карту только с других своих карт или попросите
+                            друга.
+                            Данные о переводах
+                            между своими картами не остаются в истории</p>
+                        <form onSubmit={handleSubmit} className={s.form}>
+                            <div>
                                 <select value={value} className={s.select} onChange={changeSelect}>
-                                <option>Выберите карту</option>
-                                {myCardNumbers.map((c) => (
-                                    <option key={c}>{c}</option>
-                                ))}
-                            </select>
-                            </div>}
-                        <TextField
-                            label="Сумма перевода"
-                            name="sum"
-                            value={data.sum}
-                            onChange={handleChange}
-                            error={errors.sum}
-                        />
-                        <Button className={s.button}
-                            type="submit"
-                            disabled={!isValid}
-                        >
-                            Пополнить
-                        </Button>
-                    </form>
-                </Modal.Body>
+                                    <option>Выберите карту</option>
+                                    {myCardNumbers.map((c) => (
+                                        <option key={c}>{c}</option>
+                                    ))}
+                                </select>
+                            </div>
+                            <TextField
+                                label="Сумма перевода"
+                                name="sum"
+                                value={data.sum}
+                                onChange={handleChange}
+                                error={errors.sum}
+                            />
+                            <Button className={s.button}
+                                    type="submit"
+                                    disabled={!isValid}
+                            >
+                                Пополнить
+                            </Button>
+                        </form>
+                    </Modal.Body>
 
-                <Modal.Footer className={s.prev}>
-                    <Button variant="secondary" onClick={addMoney}>Отмена</Button>
-                </Modal.Footer>
-            </Modal.Dialog>
+                    <Modal.Footer className={s.prev}>
+                        <Button variant="secondary" onClick={addMoney}>Отмена</Button>
+                    </Modal.Footer>
+                </Modal.Dialog>
+            }
         </div>
     )
 }

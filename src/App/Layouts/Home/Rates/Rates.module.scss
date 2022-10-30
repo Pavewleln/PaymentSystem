@@ -1,5 +1,10 @@
+.ratesComponent {
+  width: 98%;
+}
 .rates {
+  overflow: auto;
   display: flex;
+  width: 100%;
 }
 .rate {
   min-width: 300px;
@@ -121,51 +126,10 @@
   }
 }
 @media(max-width: 600px) {
-  .rates {
-    width: 530px;
+  .ratesComponent{
+    width: 90%
   }
-}
-@media(max-width: 580px) {
   .rates {
-    width: 500px;
-  }
-}
-@media(max-width: 540px) {
-  .rates {
-    width: 450px;
-  }
-}
-@media(max-width: 490px) {
-  .rates {
-    width: 400px;
-  }
-}
-@media(max-width: 450px) {
-  .rates {
-    margin-left: 15px;
-    width: 350px;
-  }
-}
-@media(max-width: 390px) {
-  .rates {
-    width: 91%;
-  }
-}
-@media(max-width: 370px) {
-  .rates {
-    margin-left: 5px;
-    width: 300px;
-  }
-}
-@media(max-width: 335px) {
-  .rates {
-    margin-left: 5px;
-    width: 270px;
-  }
-}
-@media(max-width: 290px) {
-  .rates {
-    margin-left: 5px;
-    width: 250px;
+    width: 100%;
   }
 }

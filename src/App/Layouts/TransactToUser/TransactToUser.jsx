@@ -90,7 +90,7 @@ export const TransactToUser = () => {
                 : myAmountOfMoney / 54.70
     const addCardSum = Number(myCardSum) >= Number(data.sum) ? Number(recipientCardSum[0]) + recipientAmountOfMoney : 0
     const validate = () => {
-        const errors = validator(data, validatorConfig, myCardSum, recipientCardId);
+        const errors = validator(data, validatorConfig, myCardSum);
         setErrors(errors);
         return Object.keys(errors).length === 0;
     };
@@ -103,25 +103,25 @@ export const TransactToUser = () => {
     };
     const changeSelect = ({target}) => {
         setValue(target.value);
+        setData({sum: ''})
     }
-    if(myCardNumbers.length < 1) return "Для того, чтобы перевести деньги, заведите карту"
-
+    if (myCardNumbers.length < 1) return "Для того, чтобы перевести деньги, заведите карту"
     return recipientCardId.length > 0 ? (
         <form onSubmit={handleSubmit} className={s.form}>
             <h5>Перевод пользователю {user.name}</h5>
-            {myCardNumbers.length === 1
-                ? <div>Номер вашей карты: {myCardNumbers}</div>
-                : <div>
-                    <select value={value} className={s.select} onChange={changeSelect}>
-                        <option>Выберите карту</option>
-                        {myCardNumbers.map((c) => (
-                            <option key={c}>{c}</option>
-                        ))}
-                    </select>
-                </div>}
+            <div>
+                <select value={value} className={s.select} onChange={changeSelect}>
+                    <option>Выберите карту</option>
+                    {myCardNumbers.map((c) => (
+                        <option key={c}>{c}</option>
+                    ))}
+                </select>
+            </div>
+            <p>Ваш счет: {myCardSum} {myCardCurrency}</p>
             <TextField
                 label="Сумма перевода"
                 name="sum"
+                placeholder={"100.00"}
                 value={data.sum}
                 onChange={handleChange}
                 error={errors.sum}

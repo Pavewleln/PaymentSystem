@@ -89,23 +89,25 @@ export const Rates = () => {
     ]
     if (rates) {
         return (
-            <div className={s.rates}>
-                {Object.values(rates).map((p) => (
-                    <div key={p.code} className={s.rate}>
-                        <div className={s.rateLeft}>
-                            <img className={s.image}
-                                 src={(p.code === "BNB" ? BNB : p.code === "AMD" ? ETM : p.code === "LTC" ? LTC : BTN)}/>
-                            <p className={s.usd}>{p.code} <img src={convert}/> USD</p>
-                            <p className={s.value}>{p.value}</p>
-                            <p className={s.percent}>{randomInt(10, 90) > 50 ? "+" : "-"}{randomInt(10, 90)}%</p>
+            <div className={s.ratesComponent}>
+                <div className={s.rates}>
+                    {Object.values(rates).map((p) => (
+                        <div key={p.code} className={s.rate}>
+                            <div className={s.rateLeft}>
+                                <img className={s.image}
+                                     src={(p.code === "BNB" ? BNB : p.code === "AMD" ? ETM : p.code === "LTC" ? LTC : BTN)}/>
+                                <p className={s.usd}>{p.code} <img src={convert}/> USD</p>
+                                <p className={s.value}>{p.value}</p>
+                                <p className={s.percent}>{randomInt(10, 90) > 50 ? "+" : "-"}{randomInt(10, 90)}%</p>
+                            </div>
+                            <div className={s.rateRight}>
+                                <LineChart width={140} height={40} data={p.data}>
+                                    <Line type="monotone" dataKey="uv" stroke="#8884d8"/>
+                                </LineChart>
+                            </div>
                         </div>
-                        <div className={s.rateRight}>
-                            <LineChart width={140} height={40} data={p.data}>
-                                <Line type="monotone" dataKey="uv" stroke="#8884d8"/>
-                            </LineChart>
-                        </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
         )
     } else {

@@ -97,7 +97,7 @@ export const CreateCard = () => {
             e.preventDefault()
             const isValid = validate();
             if (!isValid) return;
-            dispatch(createNewCard(data.bank, data.currency, currentUserData.name, amountOfMoney))
+            dispatch(createNewCard(data.bank, data.currency, currentUserData.name, amountOfMoney.toFixed(6)))
             navigate('/profile')
         }
 

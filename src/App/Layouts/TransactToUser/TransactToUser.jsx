@@ -53,9 +53,9 @@ export const TransactToUser = () => {
         e.preventDefault();
         const isValid = validate();
         if (!isValid) return;
-        dispatch(TranslateMoney(myCardId[0], removeCardSum, firstRecipientCardId, addCardSum))
-        dispatch(createHistory(myCardId, Number(data.sum), [firstRecipientCardId], recipientAmountOfMoney, date, myCardNumber, recipientCardNumber[0], myCardCurrency))
-        dispatch(createNotice(currentUserId, Number(data.sum), recipientCardAuthorName, recipientAmountOfMoney, date, myCardNumber[0], recipientCardNumber[0], myCardCurrency, recipientCardCurrency))
+        dispatch(TranslateMoney(myCardId[0], removeCardSum.toFixed(6), firstRecipientCardId, addCardSum.toFixed(6)))
+        dispatch(createHistory(myCardId, Number(data.sum), [firstRecipientCardId], recipientAmountOfMoney.toFixed(6), date, myCardNumber, recipientCardNumber[0], myCardCurrency))
+        dispatch(createNotice(currentUserId, Number(data.sum), recipientCardAuthorName, recipientAmountOfMoney.toFixed(6), date, myCardNumber[0], recipientCardNumber[0], myCardCurrency, recipientCardCurrency))
         setData({
             sum: ''
         })

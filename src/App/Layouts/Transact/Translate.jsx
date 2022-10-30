@@ -60,9 +60,9 @@ export const Translate = () => {
         e.preventDefault();
         const isValid = validate();
         if (!isValid) return;
-        dispatch(TranslateMoney(myCardId, removeCardSum, recipientCardId, addCardSum))
-        dispatch(createHistory(myCardId, Number(data.sum), recipientCardId, recipientAmountOfMoney, date, myCardNumber, Number(data.recipient), myCardCurrency))
-        dispatch(createNotice(currentUserId, Number(data.sum), recipientCardAuthorName, recipientAmountOfMoney, date, myCardNumber, Number(data.recipient), myCardCurrency, recipientCardCurrency))
+        dispatch(TranslateMoney(myCardId, removeCardSum.toFixed(6), recipientCardId, addCardSum.toFixed(6)))
+        dispatch(createHistory(myCardId, Number(data.sum), recipientCardId, recipientAmountOfMoney.toFixed(6), date, myCardNumber, Number(data.recipient), myCardCurrency))
+        dispatch(createNotice(currentUserId, Number(data.sum), recipientCardAuthorName, recipientAmountOfMoney.toFixed(6), date, myCardNumber, Number(data.recipient), myCardCurrency, recipientCardCurrency))
         setData({
             recipient: '',
             sum: ''

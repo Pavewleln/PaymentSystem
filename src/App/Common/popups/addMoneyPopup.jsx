@@ -53,7 +53,7 @@ export const AddMoneyPopup = ({addMoney}) => {
         e.preventDefault();
         const isValid = validate();
         if (!isValid) return;
-        dispatch(TranslateMoney(recipientCardId, removeCardSum, myCardId, addCardSum))
+        dispatch(TranslateMoney(recipientCardId, removeCardSum.toFixed(6), myCardId, addCardSum.toFixed(6)))
         setData({
             sum: ''
         })

@@ -28,7 +28,7 @@ export function validator(data, config, myCardSum, recipientCardId) {
                 break;
             }
             case "isContainDigitDot": {
-                const digitRegExp = /^\d+[.]/g;
+                const digitRegExp = /^\d+\.\d+$/g;
                 statusValidate = !digitRegExp.test(data);
                 break;
             }
@@ -41,7 +41,7 @@ export function validator(data, config, myCardSum, recipientCardId) {
                 break;
             }
             case "limitMoney": {
-                statusValidate = Number(myCardSum) < Number(data);
+                statusValidate = Number(myCardSum) <= Number(data);
                 break;
             }
             case "isMoney": {

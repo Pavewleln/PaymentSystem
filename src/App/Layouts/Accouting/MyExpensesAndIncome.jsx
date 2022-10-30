@@ -101,33 +101,33 @@ export const MyExpensesAndIncome = () => {
                     <div className={s.payments}>
                         <div className={s.sum}>
                             <p className={s.title}>Всего получено:</p>
-                            <p className={s.text}>{historyPaysSumPositiveForAllLife}$</p>
+                            <p className={s.text}>{historyPaysSumPositiveForAllLife.toFixed(2)}$</p>
                         </div>
                         <div className={s.sum}>
                             <p className={s.title}>Всего потрачено:</p>
-                            <p className={s.text}>{historyPaysSumNegativeForAllLife}$</p>
+                            <p className={s.text}>{historyPaysSumNegativeForAllLife.toFixed(2)}$</p>
                         </div>
                     </div>
                     <hr/>
                     <div className={s.payments}>
                         <div className={s.sum}>
                             <p className={s.title}>Получено за 7 дней:</p>
-                            <p className={s.text}>{historyPaysSumPositiveForSevenDays}$</p>
+                            <p className={s.text}>{historyPaysSumPositiveForSevenDays.toFixed(2)}$</p>
                         </div>
                         <div className={s.sum}>
                             <p className={s.title}>Потрачено за 7 дней:</p>
-                            <p className={s.text}>{historyPaysSumNegativeForSevenDays}$</p>
+                            <p className={s.text}>{historyPaysSumNegativeForSevenDays.toFixed(2)}$</p>
                         </div>
                     </div>
                     <hr/>
                     <div className={s.payments}>
                         <div className={s.sum}>
                             <p className={s.title}>Получено за сегодня:</p>
-                            <p className={s.text}>{historyPaysSumPositiveForOneDay}$</p>
+                            <p className={s.text}>{historyPaysSumPositiveForOneDay.toFixed(2)}$</p>
                         </div>
                         <div className={s.sum}>
                             <p className={s.title}>Потрачено за сегодня:</p>
-                            <p className={s.text}>{historyPaysSumNegativeForOneDay}$</p>
+                            <p className={s.text}>{historyPaysSumNegativeForOneDay.toFixed(2)}$</p>
                         </div>
                     </div>
                 </div>
@@ -136,24 +136,24 @@ export const MyExpensesAndIncome = () => {
                         <div className={s.card} key={c._id}>
                             <MyCreditCardProfile cards={c}/>
                             <div className={s.sumCard}>
-                                <p>Всего получено: <span className={s.text}>{historyPaysSumPositiveInMyCard(c._id)} {c.currency}</span></p>
+                                <p>Всего получено: <span className={s.text}>{historyPaysSumPositiveInMyCard(c._id).toFixed(6)} {c.currency}</span></p>
                             </div>
                             <div className={s.sumCard}>
-                                <p>Всего потрачено: <span className={s.text}>{historyPaysSumNegativeInMyCard(c._id)} {c.currency}</span></p>
-                            </div>
-                            <hr/>
-                            <div className={s.sumCard}>
-                                <p>Всего получено за 7 дней: <span className={s.text}>{historyPaysSumPositiveInMyCardForSevenDays(c._id)} {c.currency}</span></p>
-                            </div>
-                            <div className={s.sumCard}>
-                                <p>Всего потрачено за 7 дней: <span className={s.text}>{historyPaysSumNegativeInMyCardForSevenDays(c._id)} {c.currency}</span></p>
+                                <p>Всего потрачено: <span className={s.text}>{historyPaysSumNegativeInMyCard(c._id).toFixed(6)} {c.currency}</span></p>
                             </div>
                             <hr/>
                             <div className={s.sumCard}>
-                                <p>Всего получено сегодня: <span className={s.text}>{historyPaysSumPositiveInMyCardForOneDay(c._id)} {c.currency}</span></p>
+                                <p>Всего получено за 7 дней: <span className={s.text}>{historyPaysSumPositiveInMyCardForSevenDays(c._id).toFixed(6)} {c.currency}</span></p>
                             </div>
                             <div className={s.sumCard}>
-                                <p>Всего потрачено сегодня: <span className={s.text}>{historyPaysSumNegativeInMyCardForOneDay(c._id)} {c.currency}</span></p>
+                                <p>Всего потрачено за 7 дней: <span className={s.text}>{historyPaysSumNegativeInMyCardForSevenDays(c._id).toFixed(6)} {c.currency}</span></p>
+                            </div>
+                            <hr/>
+                            <div className={s.sumCard}>
+                                <p>Всего получено сегодня: <span className={s.text}>{historyPaysSumPositiveInMyCardForOneDay(c._id).toFixed(6)} {c.currency}</span></p>
+                            </div>
+                            <div className={s.sumCard}>
+                                <p>Всего потрачено сегодня: <span className={s.text}>{historyPaysSumNegativeInMyCardForOneDay(c._id).toFixed(6)} {c.currency}</span></p>
                             </div>
                             <hr/>
                         </div>

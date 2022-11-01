@@ -30,8 +30,8 @@ export const Authentication = () => {
                     <Link to={"/notice"} className={s.notice}>
                         <BsBell/>
                         {notice &&
-                        notice.filter((n) => n !== undefined && n.userId === currentUserId).length > 0?
-                            <div className={s.noticeLength}></div>
+                        notice.filter((n) => n !== undefined && n.userId === currentUserId).map((n) => n.datetime === date ? n.datetime : null).join(" ").length > 0
+                            ? <div className={s.noticeLength}></div>
                             : null
                         }
                     </Link>

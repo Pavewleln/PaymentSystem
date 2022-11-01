@@ -19,7 +19,7 @@ export const CreditCard = ({cardInfo, bank}) => {
                         <img className={s.image} src={card}/>
                         <p className={s.bankName}>{myCardOfThisBank.bank}</p>
                         <p className={s.paymentName}>MIR</p>
-                        <p className={s.numberCard}>{myCardOfThisBank.numberCard}</p>
+                        <p className={s.numberCard}>{myCardOfThisBank.numberCard.toString().slice(0, 4)}{" "}{myCardOfThisBank.numberCard.toString().slice(4, 8)}{" "}{myCardOfThisBank.numberCard.toString().slice(8, 12)}{" "}{myCardOfThisBank.numberCard.toString().slice(12, 16)}</p>
                         <p className={s.authorName}>{myCardOfThisBank.authorName}{" "}{myCardOfThisBank.dateOfCreation}</p>
                     </div>
                 </Link>

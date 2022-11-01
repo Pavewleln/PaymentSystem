@@ -45,7 +45,7 @@ export const MyCreditCardInfo = () => {
                     top: '100px',
                     left: '20px',
                     fontSize: '18px'
-                }}>{cardData.numberCard}</p>
+                }}>{cardData.numberCard.toString().slice(0, 4)}{" "}{cardData.numberCard.toString().slice(4, 8)}{" "}{cardData.numberCard.toString().slice(8, 12)}{" "}{cardData.numberCard.toString().slice(12, 16)}</p>
                 <p className={"text-white"} style={{
                     position: 'absolute',
                     top: '120px',

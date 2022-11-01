@@ -66,7 +66,7 @@ export const MyHistory = () => {
             return _.orderBy(
                 usersCrop,
                 ["datetime"],
-                ["desc"]
+                ["asc"]
             )
         }
         const sortedUsers = handleSort()

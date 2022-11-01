@@ -21,7 +21,6 @@ export const TransactToUser = () => {
         sum: ''
     });
     const date = new Date().toLocaleString().split(",").slice(0, 1).join(' ')
-
     const validatorConfig = {
         sum: {
             isRequired: {

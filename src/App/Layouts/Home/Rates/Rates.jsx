@@ -6,8 +6,9 @@ import ETM from '../../../../img/ETM.png'
 import BNB from '../../../../img/BNB.png'
 import s from './Rates.module.scss'
 import {randomInt} from "../../../Utils/randomInt";
+import {memo} from "react";
 
-export const Rates = () => {
+export const Rates = memo(() => {
     // const rates = useSelector(getRates())
     const rates = [
         {
@@ -115,4 +116,4 @@ export const Rates = () => {
             null
         )
     }
-}
+})

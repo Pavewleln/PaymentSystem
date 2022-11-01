@@ -2,20 +2,29 @@ import {useDispatch, useSelector} from "react-redux";
 import {deleteDataNotice, getNotice} from "../../Store/notice";
 import {getCurrentUserId} from "../../Store/users";
 import s from './Notice.module.scss'
+import _ from "lodash";
 
 export const MyNotice = () => {
     const notice = useSelector(getNotice())
     const dispatch = useDispatch()
     const currentUserId = useSelector(getCurrentUserId())
-    const date = new Date().toLocaleString()
+    const date = new Date().toLocaleString().split(",").slice(0, 1).join(' ')
     if (notice) {
         const deleteNotice = (id) => {
             dispatch(deleteDataNotice(id))
         }
         const myNotice = notice.filter((n) => n !== undefined && n.userId === currentUserId)
-        return myNotice.length !== 0 ? (
+        const handleSort = () => {
+            return _.orderBy(
+                myNotice,
+                ["datetime"],
+                ["desc"]
+            )
+        }
+        const myNoticeForDateTime = handleSort()
+        return myNoticeForDateTime.length !== 0 ? (
             <div className={s.notice}>
-                {myNotice.map((n) => (
+                {myNoticeForDateTime.map((n) => (
                     <div key={n._id}>
                         <div className={s.block}>
                             {n.datetime === date

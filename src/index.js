@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Provider} from "react-redux";
 import {createStore} from "./App/Store/createStore";
 import {HashRouter} from "react-router-dom";
+import './i18n'
 
 const store = createStore()
 

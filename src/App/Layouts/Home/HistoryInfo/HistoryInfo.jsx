@@ -7,8 +7,10 @@ import BTN from "../../../../img/BTN.png";
 import _ from "lodash";
 import s from './HistoryInfo.module.scss'
 import {Table} from "react-bootstrap";
+import {useTranslation} from "react-i18next";
 
 export const HistoryInfo = ({historyCardForId}) => {
+    const {t} = useTranslation();
     const history = useSelector(getHistory())
     if (history) {
         const historyCard = history.filter((h) => h !== undefined && h.cardId === historyCardForId)
@@ -26,9 +28,9 @@ export const HistoryInfo = ({historyCardForId}) => {
                     <thead>
                     <tr className={"bg-light"}>
                         <th scope="col"></th>
-                        <th className={"text-center"} scope="col">Валюта отправителя</th>
-                        <th className={"text-center"} scope="col">Дата</th>
-                        <th className={"text-center"} scope="col">Сумма перевода</th>
+                        <th className={"text-center"} scope="col">{t("sendersCurrency")}</th>
+                        <th className={"text-center"} scope="col">{t("data")}</th>
+                        <th className={"text-center"} scope="col">{t("transferAmount")}</th>
                     </tr>
                     </thead>
                     {sortedHistory.map((h) => (

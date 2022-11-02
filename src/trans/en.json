@@ -1,0 +1,21 @@
+{
+  "text": "Some text",
+
+  "home": "Home",
+  "users": "Users",
+  "followers": "Followers",
+  "accounting": "Accounting",
+  "history": "History",
+  "settings": "Settings",
+
+  "welcome": "Hello",
+  "today": "Today",
+  "mapHistory": "Map history",
+  "toLearnMore": "To learn more",
+  "sendersCurrency": "Sender's currency",
+  "date": "Date",
+  "transferAmount": "Transfer amount",
+
+  "signInToContinue": "Sign in to continue"
+
+}

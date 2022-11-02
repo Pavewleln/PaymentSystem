@@ -7,8 +7,10 @@ import {getNotice, getNoticeLoadingStatus, loadNoticeList} from "../../Store/not
 import {getCreditCardsList} from "../../Store/myCreaditCard";
 import {useEffect} from "react";
 import s from './Header.module.scss'
+import {useTranslation} from "react-i18next";
 
 export const Authentication = () => {
+    const {t} = useTranslation();
     const currentUser = useSelector(getCurrentUserData());
     const notice = useSelector(getNotice())
     const currentUserId = useSelector(getCurrentUserId())
@@ -23,8 +25,8 @@ export const Authentication = () => {
         return (
             <div className={s.authentication}>
                 <div>
-                    <h4 className={s.h4}>Здравствуйте {firstName}</h4>
-                    <p className={s.date}>Сегодня {date}</p>
+                    <h4 className={s.h4}>{t("welcome")} {firstName}</h4>
+                    <p className={s.date}>{t("date")} {date}</p>
                 </div>
                 <div className={s.authenticationRight}>
                     <Link to={"/notice"} className={s.notice}>
@@ -47,8 +49,8 @@ export const Authentication = () => {
         return (
             <div className="d-flex justify-content-between align-items-center p-3 w-100">
                 <div>
-                    <h4>Здравствуйте</h4>
-                    <p style={{fontSize: '14px'}}>Сегодня {date}</p>
+                    <h4>{t("welcome")}</h4>
+                    <p style={{fontSize: '14px'}}>{t("date")} {date}</p>
                 </div>
                 <div className={"d-flex"}>
                     <div className={"d-flex align-items-center"}>

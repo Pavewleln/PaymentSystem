@@ -1,0 +1,19 @@
+{
+  "text": "Просто текст",
+  "home": "Главная",
+  "users": "Пользователи",
+  "followers": "Друзья",
+  "accounting": "Учет",
+  "history": "История",
+  "settings": "Настройки",
+
+  "welcome": "Здравствуйте",
+  "today": "Сегодня",
+  "mapHistory": "История карты",
+  "toLearnMore": "Узнать больше",
+  "sendersCurrency": "Валюта отправителя",
+  "date": "Дата",
+  "transferAmount": "Сумма перевода",
+
+  "signInToContinue": "Войдите в систему, чтобы продолжить"
+}

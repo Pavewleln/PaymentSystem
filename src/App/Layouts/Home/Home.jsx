@@ -6,12 +6,14 @@ import {CreditCardsLoader} from "../../Hoc/creditCardsLoader";
 import {HistoryLoader} from "../../Hoc/historyLoader";
 import React, {useContext, useState} from "react";
 import s from './Home.module.scss'
+import {useTranslation} from "react-i18next";
 
 const WalletContext = React.createContext()
 export const useWallet = () => {
     return useContext(WalletContext);
 };
 export const Home = () => {
+    const {t} = useTranslation();
     const [cardId, setCardId] = useState()
     return (
         <div>
@@ -19,8 +21,8 @@ export const Home = () => {
             <div className={s.home}>
                 <div className={s.homeLeft}>
                     <div className={s.homeTitle}>
-                        <h3 className={s.historyCard}>История карты</h3>
-                        <Link className={s.historyCardDescription} to={"/history"}>Узнать больше</Link>
+                        <h3 className={s.historyCard}>{t("mapHistory")}</h3>
+                        <Link className={s.historyCardDescription} to={"/history"}>{t("toLearnMore")}</Link>
                     </div>
                     {cardId ? (
                         <HistoryLoader>

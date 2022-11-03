@@ -3,8 +3,10 @@ import {deleteDataNotice, getNotice} from "../../Store/notice";
 import {getCurrentUserId} from "../../Store/users";
 import s from './Notice.module.scss'
 import _ from "lodash";
+import {useTranslation} from "react-i18next";
 
 export const MyNotice = () => {
+    const {t} = useTranslation();
     const notice = useSelector(getNotice())
     const dispatch = useDispatch()
     const currentUserId = useSelector(getCurrentUserId())
@@ -28,7 +30,7 @@ export const MyNotice = () => {
                     <div key={n._id}>
                         <div className={s.block}>
                             {n.datetime === date
-                                ? <span className={s.new}>новое</span>
+                                ? <span className={s.new}>{t("new")}</span>
                                 : <span className={s.dateTime}>{n.datetime}</span>
                             }
                             {" "}
@@ -42,13 +44,13 @@ export const MyNotice = () => {
             </div>
         ) : (
             <div>
-                У вас нет уведомлений
+                {t("youDoNotHaveNotifications")}
             </div>
         )
     } else {
         return (
             <div>
-                У вас нет уведомлений
+                {t("youDoNotHaveNotifications")}
             </div>
         )
     }

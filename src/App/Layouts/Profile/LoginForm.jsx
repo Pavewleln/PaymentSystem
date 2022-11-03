@@ -5,8 +5,10 @@ import TextField from "../../Common/form/textField";
 import CheckBoxField from "../../Common/form/checkBoxField";
 import {getAuthError, login} from "../../Store/users";
 import {useNavigate} from "react-router";
+import {useTranslation} from "react-i18next";
 
 export const LoginForm = () => {
+    const {t} = useTranslation();
     const navigate = useNavigate()
     const dispatch = useDispatch();
     const loginError = useSelector(getAuthError());

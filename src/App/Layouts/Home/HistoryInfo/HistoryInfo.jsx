@@ -56,7 +56,7 @@ export const HistoryInfo = ({historyCardForId}) => {
         ) : (
             <div>
                 <p>
-                    Нет истории
+                    {t("noHistory")}
                 </p>
             </div>
         )
@@ -64,7 +64,7 @@ export const HistoryInfo = ({historyCardForId}) => {
         if (history === null) {
             return (<div>
                 <p>
-                    Нет истории
+                    {t("noHistory")}
                 </p>
             </div>)
         }

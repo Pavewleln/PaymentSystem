@@ -1,6 +1,7 @@
 import {useTranslation} from "react-i18next";
-import i18n from "../../i18n";
-import {UseLocalstorage} from "../../Hooks/use-localstorage";
+import i18n from "../../../i18n";
+import {UseLocalstorage} from "../../../Hooks/use-localstorage";
+import {Button} from "react-bootstrap";
 
 export const Settings = () => {
     const {t} = useTranslation();
@@ -18,8 +19,7 @@ export const Settings = () => {
     }
     return (
         <>
-            <button onClick={handleLanguageChange}>Изменить язык</button>
-            <div>{t("text")}</div>
+            <Button onClick={handleLanguageChange}>{t("language")}</Button>
         </>
     )
 }

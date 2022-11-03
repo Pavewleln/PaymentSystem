@@ -4,8 +4,10 @@ import {getCreditCardsList} from "../../Store/myCreaditCard";
 import {getCurrentUserId} from "../../Store/users";
 import {MyCreditCardProfile} from "../Profile/MyCreditCardProfile/MyCreditCardProfile";
 import s from './Accounting.module.scss'
+import {useTranslation} from "react-i18next";
 
 export const MyExpensesAndIncome = () => {
+    const {t} = useTranslation();
     const history = useSelector(getHistory())
     const cards = useSelector(getCreditCardsList())
     const currentUserId = useSelector(getCurrentUserId())
@@ -31,7 +33,7 @@ export const MyExpensesAndIncome = () => {
         const historyPaysForAllLife = historyArr.map(p => p && Number(p.pay))
         const historyCurrenciesForAllLife = historyArr.map(p => p && p.shortName)
 
-        if(!historyPaysForAllLife || historyPaysForAllLife.length === 0) return "У вас нет ни одного перевода"
+        if(!historyPaysForAllLife || historyPaysForAllLife.length === 0) return t("youDoNotHaveAnyTranslation")
 
         const historyPaysInDollars = (historyPays, historyCurrencies) => {
             let historyPaysForLifeInDollars = [];
@@ -100,33 +102,33 @@ export const MyExpensesAndIncome = () => {
                 <div className={s.allPayment}>
                     <div className={s.payments}>
                         <div className={s.sum}>
-                            <p className={s.title}>Всего получено:</p>
+                            <p className={s.title}>{t("totalReceived")}:</p>
                             <p className={s.text}>{historyPaysSumPositiveForAllLife.toFixed(2)}$</p>
                         </div>
                         <div className={s.sum}>
-                            <p className={s.title}>Всего потрачено:</p>
+                            <p className={s.title}>{t("totalSpent")}:</p>
                             <p className={s.text}>{historyPaysSumNegativeForAllLife.toFixed(2)}$</p>
                         </div>
                     </div>
                     <hr/>
                     <div className={s.payments}>
                         <div className={s.sum}>
-                            <p className={s.title}>Получено за 7 дней:</p>
+                            <p className={s.title}>{t("receivedIn7Days")}:</p>
                             <p className={s.text}>{historyPaysSumPositiveForSevenDays.toFixed(2)}$</p>
                         </div>
                         <div className={s.sum}>
-                            <p className={s.title}>Потрачено за 7 дней:</p>
+                            <p className={s.title}>{t("spentIn7Days")}:</p>
                             <p className={s.text}>{historyPaysSumNegativeForSevenDays.toFixed(2)}$</p>
                         </div>
                     </div>
                     <hr/>
                     <div className={s.payments}>
                         <div className={s.sum}>
-                            <p className={s.title}>Получено за сегодня:</p>
+                            <p className={s.title}>{t("receivedToday")}:</p>
                             <p className={s.text}>{historyPaysSumPositiveForOneDay.toFixed(2)}$</p>
                         </div>
                         <div className={s.sum}>
-                            <p className={s.title}>Потрачено за сегодня:</p>
+                            <p className={s.title}>{t("spentToday")}:</p>
                             <p className={s.text}>{historyPaysSumNegativeForOneDay.toFixed(2)}$</p>
                         </div>
                     </div>
@@ -136,24 +138,24 @@ export const MyExpensesAndIncome = () => {
                         <div className={s.card} key={c._id}>
                             <MyCreditCardProfile cards={c}/>
                             <div className={s.sumCard}>
-                                <p>Всего получено: <span className={s.text}>{historyPaysSumPositiveInMyCard(c._id).toFixed(6)} {c.currency}</span></p>
+                                <p>{t("totalReceived")}: <span className={s.text}>{historyPaysSumPositiveInMyCard(c._id).toFixed(6)} {c.currency}</span></p>
                             </div>
                             <div className={s.sumCard}>
-                                <p>Всего потрачено: <span className={s.text}>{historyPaysSumNegativeInMyCard(c._id).toFixed(6)} {c.currency}</span></p>
-                            </div>
-                            <hr/>
-                            <div className={s.sumCard}>
-                                <p>Всего получено за 7 дней: <span className={s.text}>{historyPaysSumPositiveInMyCardForSevenDays(c._id).toFixed(6)} {c.currency}</span></p>
-                            </div>
-                            <div className={s.sumCard}>
-                                <p>Всего потрачено за 7 дней: <span className={s.text}>{historyPaysSumNegativeInMyCardForSevenDays(c._id).toFixed(6)} {c.currency}</span></p>
+                                <p>{t("totalSpent")}: <span className={s.text}>{historyPaysSumNegativeInMyCard(c._id).toFixed(6)} {c.currency}</span></p>
                             </div>
                             <hr/>
                             <div className={s.sumCard}>
-                                <p>Всего получено сегодня: <span className={s.text}>{historyPaysSumPositiveInMyCardForOneDay(c._id).toFixed(6)} {c.currency}</span></p>
+                                <p>{t("receivedIn7Days")}: <span className={s.text}>{historyPaysSumPositiveInMyCardForSevenDays(c._id).toFixed(6)} {c.currency}</span></p>
                             </div>
                             <div className={s.sumCard}>
-                                <p>Всего потрачено сегодня: <span className={s.text}>{historyPaysSumNegativeInMyCardForOneDay(c._id).toFixed(6)} {c.currency}</span></p>
+                                <p>{t("spentIn7Days")}: <span className={s.text}>{historyPaysSumNegativeInMyCardForSevenDays(c._id).toFixed(6)} {c.currency}</span></p>
+                            </div>
+                            <hr/>
+                            <div className={s.sumCard}>
+                                <p>{t("receivedToday")}: <span className={s.text}>{historyPaysSumPositiveInMyCardForOneDay(c._id).toFixed(6)} {c.currency}</span></p>
+                            </div>
+                            <div className={s.sumCard}>
+                                <p>{t("spentToday")}: <span className={s.text}>{historyPaysSumNegativeInMyCardForOneDay(c._id).toFixed(6)} {c.currency}</span></p>
                             </div>
                             <hr/>
                         </div>

@@ -3,8 +3,10 @@ import {getCreditCardsList} from "../../../Store/myCreaditCard";
 import {getCurrentUserId} from "../../../Store/users";
 import {Link} from "react-router-dom";
 import {MyCreditCards} from "../MyCreditCards/MyCreditCards";
+import {useTranslation} from "react-i18next";
 
 export const Wallet = () => {
+    const {t} = useTranslation();
     const cards = useSelector(getCreditCardsList())
     const currentUserId = useSelector(getCurrentUserId())
     if (cards) {
@@ -15,13 +17,13 @@ export const Wallet = () => {
             </div>
         ) : (
             <div>
-                <h6>У вас еще нет карты, хотите <Link to={"/createCard"}>создать</Link>?</h6>
+                <h6>{t("youDoNotHaveCardYetDoYouWantTo")} <Link to={"/createCard"}>{t("create")}</Link>?</h6>
             </div>
         )
     } else {
         return (
             <div>
-                <h6>У вас еще нет карты, хотите <Link to={"/createCard"}>создать</Link>?</h6>
+                <h6>{t("youDoNotHaveCardYetDoYouWantTo")} <Link to={"/createCard"}>{t("create")}</Link>?</h6>
             </div>
         )
     }

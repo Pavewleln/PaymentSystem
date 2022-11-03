@@ -1,5 +1,8 @@
 {
-  "text": "Просто текст",
+  "language": "Русский",
+  "russian": "Русский",
+  "english": "Английский",
+
   "home": "Главная",
   "users": "Пользователи",
   "followers": "Друзья",
@@ -15,5 +18,72 @@
   "date": "Дата",
   "transferAmount": "Сумма перевода",
 
-  "signInToContinue": "Войдите в систему, чтобы продолжить"
+  "signInToContinue": "Войдите в систему, чтобы продолжить",
+
+  "totalReceived": "Всего получено",
+  "totalSpent": "Всего потрачено",
+  "receivedIn7Days": "Получено за 7 дней",
+  "receivedToday": "Получено сегодня",
+  "spentIn7Days": "Потрачено за 7 дней",
+  "spentToday": "Потрачено сегодня",
+  "youDoNotHaveAnyTranslation": "У вас нет ни одного перевода",
+
+  "availableCurrencies": "После создания карты вам будет сразу же доступна валюта на сумму 100$",
+  "chooseMap": "Выбери карту",
+  "youCanOnlySelectCardThatYouDoNotHaveYet": "Можно выбрать только карту, которой у вас еще нет",
+  "youHaveAllTheCardsOfOurBank": "У вас есть все карты нашего банка",
+  "selectCurrencies": "Выбери валюту",
+  "sendCardToYourAddress": "Прислать карту на ваш адрес",
+  "createAnElectronic": "Создать электронную",
+  "whatCardFormatDoYouNeed": "Какой формат карты вам нужен",
+  "create": "создать",
+
+  "search": "Найти",
+  "byTheName": "По имени",
+  "byPhone": "По телефону",
+  "atThePlaceOfResidence": "По месту жительства",
+  "name": "Имя",
+  "totalTransfers": "Всего переводов",
+  "placeOfResidence": "Место жительства",
+  "youHaveNoFriendsAtTheMoment": "В данный момент у вас нет друзей",
+  "noUsersAtTheMoment": "В данный момент нет пользователей",
+
+  "byDate": "По дате",
+  "bySenderNumber": "По номеру отправителя",
+  "byRecipientNumber": "По номеру получателя",
+  "senderCard": "Карта отправителя",
+  "recipientCard": "Карта получателя",
+  "noHistory": "Нет истории",
+
+  "youDoNotHaveCardYetDoYouWantTo": "У вас еще нет карты, хотите ",
+
+  "new": "Новое",
+  "youDoNotHaveNotifications": "У вас нет уведомлений",
+
+  "registration": "Регистрация",
+  "alreadyHaveAnAccount": "Уже есть аккаунт?",
+  "toComeIn": "Войти",
+  "entrance": "Вход",
+  "doNotHaveAnAccountYet": "Еще нет аккаунта?",
+  "register": "Зарегистрироваться",
+
+  "logout": "Выход и системы",
+
+  "back": "Назад",
+  "topUp": "Пополнить",
+  "translate": "Перевести",
+  "block": "Заблокировать",
+
+
+  "dateOfBirth": "Date of Birth",
+  "phoneNumber": "Phone number",
+  "sex": "sex",
+  "description": "Description",
+  "signOut": "Sign out",
+  "male": "male",
+  "female": "female",
+  "other": "other",
+
+  "actionCompletedSuccessfully": "Действие успешно выполнено!",
+  "goBackToTheMainPage": "Вернуться на главную"
 }

@@ -6,8 +6,10 @@ import {getCreditCardsList} from "../../Store/myCreaditCard";
 import {MyCreditCardProfile} from "./MyCreditCardProfile/MyCreditCardProfile";
 import {AiOutlineSetting} from "@react-icons/all-files/ai/AiOutlineSetting";
 import s from './Profile.module.scss'
+import {useTranslation} from "react-i18next";
 
 export const ProfileInfo = () => {
+    const {t} = useTranslation();
     const currentUser = useSelector(getCurrentUserData());
     const cards = useSelector(getCreditCardsList())
     const currentUserId = useSelector(getCurrentUserId())
@@ -25,14 +27,13 @@ export const ProfileInfo = () => {
                         </div>
                     </div>
                     <div className={s.profileBottom}>
-                        <p>Место жительства: {currentUser.location}</p>
-                        <p>Дата рождения: {currentUser.dateOfBirth}</p>
-                        <p>Номер телефона: {currentUser.telephone}</p>
-                        <p>Пол: {currentUser.sex === "male" ? "Мужской" : currentUser.sex === "female" ? "Женский" : "Другое"}</p>
-                        <p>Описание: {currentUser.description}</p>
+                        <p>{t("placeOfResidence")}: {currentUser.location}</p>
+                        <p>{t("dateOfBirth")}: {currentUser.dateOfBirth}</p>
+                        <p>{t("phoneNumber")}: {currentUser.telephone}</p>
+                        <p>{t("sex")}: {currentUser.sex === "male" ? t("male") : currentUser.sex === "female" ? t("female") : t("other")}</p>
+                        <p>{t("description")}: {currentUser.description}</p>
                     </div>
-                    <Link to={'/logout'} className={s.logout}>Выйти
-                        из аккаунта</Link>
+                    <Link to={'/logout'} className={s.logout}>{t("signOut")}</Link>
                 </div>
                 {cards.filter((p) => p.userId === currentUserId).length !== 0
                     ? (
@@ -43,7 +44,7 @@ export const ProfileInfo = () => {
                         </div>
                     )
                     : (
-                        <h6>У вас еще нет карты, хотите <Link to={"/createCard"}>создать</Link>?</h6>
+                        <h6>{t("youDoNotHaveCardYetDoYouWantTo")}<Link to={"/createCard"}>{t("create")}</Link>?</h6>
                     )
                 }
             </div>

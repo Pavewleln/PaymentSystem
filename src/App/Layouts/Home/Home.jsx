@@ -29,7 +29,7 @@ export const Home = () => {
                             <HistoryInfo historyCardForId={cardId}/>
                         </HistoryLoader>
                     ) : (
-                        <p>У вас нет истории</p>
+                        <p>{t("noHistory")}</p>
                     )
                     }
                 </div>

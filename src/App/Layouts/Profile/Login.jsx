@@ -2,8 +2,10 @@ import {SignUpForm} from "./SignUpForm";
 import {LoginForm} from "./LoginForm";
 import {useParams} from "react-router";
 import {useState} from "react";
+import {useTranslation} from "react-i18next";
 
 export const Login = () => {
+    const {t} = useTranslation();
     const {type} = useParams();
     const [formType, setFormType] = useState(
         type === "register" ? type : "login"
@@ -19,33 +21,33 @@ export const Login = () => {
                 <div className="col-md-6 bg-white rounded offset-md-3 shadow p-4">
                     {formType === "register" ? (
                         <>
-                            <h3 className="mb-4">Регистрация</h3>
+                            <h3 className="mb-4">{t("registration")}</h3>
                             <SignUpForm />
                             <p>
-                                Уже есть аккаунт?{" "}
+                                {t("alreadyHaveAnAccount")}{" "}
                                 <a
                                     role="button"
                                     className={"alert-danger"}
                                     onClick={toggleFormType}
                                 >
                                     {" "}
-                                    Войти
+                                    {t("toComeIn")}
                                 </a>
                             </p>
                         </>
                     ) : (
                         <>
-                            <h3 className="mb-4">Вход</h3>
+                            <h3 className="mb-4">{t("entrance")}</h3>
                             <LoginForm />
                             <p>
-                                Еще нет аккаунта?{" "}
+                                {t("doNotHaveAnAccountYet")}{" "}
                                 <a
                                     role="button"
                                     className={"alert-danger"}
                                     onClick={toggleFormType}
                                 >
                                     {" "}
-                                    Зарегистрироваться
+                                    {t("register")}
                                 </a>
                             </p>
                         </>

@@ -1,5 +1,7 @@
 {
-  "text": "Some text",
+  "language": "English",
+  "russian": "Russian",
+  "english": "English",
 
   "home": "Home",
   "users": "Users",
@@ -16,6 +18,62 @@
   "date": "Date",
   "transferAmount": "Transfer amount",
 
-  "signInToContinue": "Sign in to continue"
+  "signInToContinue": "Sign in to continue",
 
+  "totalReceived": "Total received",
+  "totalSpent": "Total spent",
+  "receivedIn7Days": "Received in 7 days",
+  "receivedToday": "Received today",
+  "spentIn7Days": "Spent in 7 days",
+  "spentToday": "Spent today",
+  "youDoNotHaveAnyTranslation": "You don't have any translation",
+
+  "availableCurrencies": "After creating the card, you will immediately have access to the currency in the amount of $100",
+  "chooseMap": "Choose a Map",
+  "youCanOnlySelectCardThatYouDoNotHaveYet": "You can only select a card that you don't have yet",
+  "youHaveAllTheCardsOfOurBank": "You have all the cards of our bank",
+  "selectCurrencies": "select currencies",
+  "sendCardToYourAddress": "Send a card to your address",
+  "createAnElectronic": "Create an electronic",
+  "whatCardFormatDoYouNeed": "what card format do you need",
+  "create": "create",
+
+  "search": "Search",
+  "byTheName": "By the name",
+  "byPhone": "By phone",
+  "atThePlaceOfResidence": "At the place of residence",
+  "name": "Name",
+  "totalTransfers": "Total transfers",
+  "placeOfResidence": "Place of residence",
+  "youHaveNoFriendsAtTheMoment": "You have no friends at the moment",
+  "noUsersAtTheMoment": "There are currently no users",
+
+  "byDate": "By date",
+  "bySenderNumber": "By sender's number",
+  "byRecipientNumber": "By recipient's number",
+  "senderCard": "Sender card",
+  "recipientCard": "Recipient's card",
+  "noHistory": "No history",
+
+  "youDoNotHaveCardYetDoYouWantTo": "You don't have a card yet, do you want to ",
+
+  "new": "New",
+  "youDoNotHaveNotifications": "You don't have notifications",
+
+  "registration": "Registration",
+  "alreadyHaveAnAccount": "Already have an account?",
+  "toComeIn": "To come in",
+  "entrance": "Entrance",
+  "doNotHaveAnAccountYet": "Don't have an account yet?",
+  "register": "Register",
+
+  "logout": "Exit and systems",
+
+  "back": "Back",
+  "topUp": "Top up",
+  "translate": "Translate",
+  "block": "Block",
+
+  "actionCompletedSuccessfully": "Action completed successfully!",
+  "goBackToTheMainPage": "Go back to the main page"
 }

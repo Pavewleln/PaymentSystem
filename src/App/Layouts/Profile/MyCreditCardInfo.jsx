@@ -7,8 +7,10 @@ import {Button} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import {PopupDeleteCard} from "../../Common/popups/popupDeleteCard";
 import {AddMoneyPopup} from "../../Common/popups/addMoneyPopup";
+import {useTranslation} from "react-i18next";
 
 export const MyCreditCardInfo = () => {
+    const {t} = useTranslation();
     const {cardId} = useParams()
     const [removePopup, setRemovePopup] = useState(false)
     const [addMoneyPopup, setAddMoneyPopup] = useState(false)
@@ -53,11 +55,11 @@ export const MyCreditCardInfo = () => {
                     fontSize: '12px'
                 }}>{cardData.authorName}{" "}{cardData.dateOfCreation}</p>
             </div>
-            <Button role={"button"} className={"bg-info m-2"} onClick={() => navigate(-1)}>Назад</Button>
-            <Button role={"button"} className={"bg-primary m-2"} onClick={addMoney}>Пополнить</Button>
+            <Button role={"button"} className={"bg-info m-2"} onClick={() => navigate(-1)}>{t("back")}</Button>
+            <Button role={"button"} className={"bg-primary m-2"} onClick={addMoney}>{t("topUp")}</Button>
             <Link to={`/translate/${cardData._id}`} className={"m-2"}><Button role={"button"}
-                                                                              className={"bg-success m-2"}>Перевести</Button></Link>
-            <Button role={"button"} className={"bg-danger m-2"} onClick={warning}>Заблокировать</Button>
+                                                                              className={"bg-success m-2"}>{t("translate")}</Button></Link>
+            <Button role={"button"} className={"bg-danger m-2"} onClick={warning}>{t("block")}</Button>
         </div>
     ) : (
         <div className="spinner-border text-dark" role="status">

@@ -6,14 +6,15 @@ import {paginate} from "../../Utils/paginate";
 import {Pagination} from "../../Common/UserInfo/Pagination";
 import s from './Followers-Users.module.scss'
 import {Table} from "react-bootstrap";
-import TextField from "../../Common/form/textField";
+import {useTranslation} from "react-i18next";
 
 export const Users = () => {
+    const {t} = useTranslation();
     const allUsersSystem = useSelector(getUsers())
     const currentUserId = useSelector(getCurrentUserId())
     const [currentPage, setCurrentPage] = useState(1);
     const [searchQuery, setSearchQuery] = useState("");
-    const [value, setValue] = useState("По имени");
+    const [value, setValue] = useState(t("byTheName"));
     const pageSize = 5;
     const changeSelect = ({target}) => {
         setValue(target.value);
@@ -30,11 +31,11 @@ export const Users = () => {
             const filteredUsers = searchQuery
                 ? data.filter(
                     (user) =>
-                        value === "По имени"
+                        value === t("byTheName")
                             ? user.name
                             .toLowerCase()
                             .indexOf(searchQuery.toLowerCase()) !== -1
-                            : value === "По телефону"
+                            : value === t("byPhone")
                                 ? user.telephone
                                 .toLowerCase()
                                 .indexOf(searchQuery.toLowerCase()) !== -1
@@ -52,13 +53,14 @@ export const Users = () => {
         return (
             <div className={s.users}>
                 <div className={s.usersTitle}>
-                    <h2 className={s.h3}>Пользователи</h2>
+                    <h2 className={s.h3}>{t("users")}</h2>
                     <div>
-                        <input className={s.input} placeholder="Найти" onChange={handleSearchQuery} value={searchQuery}/>
+                        <input className={s.input} placeholder={t("search")} onChange={handleSearchQuery}
+                               value={searchQuery}/>
                         <select value={value} className={s.select} onChange={changeSelect}>
-                            <option>По имени</option>
-                            <option>По телефону</option>
-                            <option>По месту жительства</option>
+                            <option>{t("byTheName")}</option>
+                            <option>{t("byPhone")}</option>
+                            <option>{t("atThePlaceOfResidence")}</option>
                         </select>
                     </div>
                 </div>
@@ -66,9 +68,9 @@ export const Users = () => {
                     <Table>
                         <thead>
                         <tr className={"bg-light"}>
-                            <th className={s.th} scope="col">Имя</th>
-                            <th className={s.th} scope="col">Всего переводов</th>
-                            <th className={s.th} scope="col">Место жительства</th>
+                            <th scope="col" className={s.th} >{t("name")}</th>
+                            <th scope="col" className={s.th} >{t("totalTransfers")}</th>
+                            <th scope="col" className={s.th} >{t("placeOfResidence")}</th>
                             <th scope="col"></th>
                             <th scope="col"></th>
                         </tr>
@@ -89,6 +91,12 @@ export const Users = () => {
                         />
                     </div>
                 </div>
+            </div>
+        )
+    } else {
+        return (
+            <div>
+                {t("noUsersAtTheMoment")}
             </div>
         )
     }

@@ -14,8 +14,10 @@ import SelectField from "../../Common/form/selectField";
 import {validator} from "../../Utils/validator";
 import s from './CreateCard.module.scss'
 import {Button} from "react-bootstrap";
+import {useTranslation} from "react-i18next";
 
 export const CreateCard = () => {
+    const {t} = useTranslation();
     const navigate = useNavigate()
     const dispatch = useDispatch();
 
@@ -111,10 +113,10 @@ export const CreateCard = () => {
         }))
         return (
             <form onSubmit={handleSubmit} className={s.form}>
-                <p>После создания карты вам будет сразу же доступна валюта на сумму 100$</p>
+                <p>{t("availableCurrencies")}</p>
                 <SelectField
-                    label="Выбери карту"
-                    defaultOption={banksList.length !== 0 ? "Можно выбрать только карту, которой у вас еще нет" : "У вас есть все карты нашего банка"}
+                    label={t("chooseMap")}
+                    defaultOption={banksList.length !== 0 ? t("youCanOnlySelectCardThatYouDoNotHaveYet") : t("youHaveAllTheCardsOfOurBank")}
                     options={banksList}
                     name="bank"
                     error={errors.bank}
@@ -122,8 +124,8 @@ export const CreateCard = () => {
                     value={data.bank}
                 />
                 <SelectField
-                    label="Выбери валюту"
-                    defaultOption={"Выберите валюту"}
+                    label={t("selectCurrencies")}
+                    defaultOption={t("selectCurrencies")}
                     options={currencyList}
                     name="currency"
                     error={errors.currency}
@@ -132,19 +134,19 @@ export const CreateCard = () => {
                 />
                 <RadioField
                     options={[
-                        {name: "Прислать карту на ваш адрес", value: "real"},
-                        {name: "Создать электронную", value: "electronic"}
+                        {name: t("sendCardToYourAddress"), value: "real"},
+                        {name: t("createAnElectronic"), value: "electronic"}
                     ]}
                     value={data.format}
                     name="format"
                     onChange={handleChange}
-                    label="Какой формат карты вам нужен"
+                    label={t("whatCardFormatDoYouNeed")}
                 />
                 <Button
                     type="submit"
                     disabled={!isValid}
                 >
-                    Создать
+                    {t("create")}
                 </Button>
             </form>
         )

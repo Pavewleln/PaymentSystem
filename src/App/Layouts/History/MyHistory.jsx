@@ -11,8 +11,10 @@ import {Table} from "react-bootstrap";
 import {useState} from "react";
 import _ from "lodash";
 import s from './History.module.css'
+import {useTranslation} from "react-i18next";
 
 export const MyHistory = () => {
+    const {t} = useTranslation();
     const history = useSelector(getHistory())
     const cards = useSelector(getCreditCardsList())
     const currentUserId = useSelector(getCurrentUserId())
@@ -73,14 +75,14 @@ export const MyHistory = () => {
         return (
             <div className={s.history}>
                 <div className={s.historyTitle}>
-                    <h3 className={s.h3}>История</h3>
+                    <h3 className={s.h3}>{t("history")}</h3>
                     <div>
-                        <input className={s.input} placeholder="Поиск" onChange={handleSearchQuery}
+                        <input className={s.input} placeholder={t("search")} onChange={handleSearchQuery}
                                value={searchQuery}/>
                         <select value={value} className={s.select} onChange={changeSelect}>
-                            <option>По дате</option>
-                            <option>По номеру отправителя</option>
-                            <option>По номеру получателя</option>
+                            <option>{t("byDate")}</option>
+                            <option>{t("bySenderNumber")}</option>
+                            <option>{t("byRecipientNumber")}</option>
                         </select>
                     </div>
                 </div>
@@ -88,11 +90,11 @@ export const MyHistory = () => {
                     <thead>
                     <tr className={"bg-light"}>
                         <th className={s.th1} scope="col"></th>
-                        <th className={"text-center"} scope="col">Карта отправителя</th>
-                        <th className={"text-center"} scope="col">Карта получателя</th>
-                        <th className={"text-center"} scope="col">Валюта отправителя</th>
-                        <th className={"text-center"} scope="col">Дата</th>
-                        <th className={"text-center"} scope="col">Сумма перевода</th>
+                        <th className={"text-center"} scope="col">{t("senderCard")}</th>
+                        <th className={"text-center"} scope="col">{t("recipientCard")}</th>
+                        <th className={"text-center"} scope="col">{t("sendersCurrency")}</th>
+                        <th className={"text-center"} scope="col">{t("date")}</th>
+                        <th className={"text-center"} scope="col">{t("transferAmount")}</th>
                     </tr>
                     </thead>
                     <HistoryLoader>
@@ -122,13 +124,13 @@ export const MyHistory = () => {
                                 </tr>
                                 </tbody>
                             ))
-                            : "Нет истории"
+                            : t("noHistory")
                         }
                     </HistoryLoader>
                 </Table>
             </div>
         )
     } else {
-        return "Нет истории"
+        return t("noHistory")
     }
 }

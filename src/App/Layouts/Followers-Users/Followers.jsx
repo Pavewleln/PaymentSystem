@@ -6,14 +6,16 @@ import {Pagination} from "../../Common/UserInfo/Pagination";
 import {UserInfo} from "../../Common/UserInfo/UserInfo";
 import s from './Followers-Users.module.scss'
 import {Table} from "react-bootstrap";
+import {useTranslation} from "react-i18next";
 
 export const Followers = () => {
+    const {t} = useTranslation();
     const allUsersSystem = useSelector(getUsers())
     const currentUserData = useSelector(getCurrentUserData())
     const currentUserId = useSelector(getCurrentUserId())
     const [currentPage, setCurrentPage] = useState(1);
     const [searchQuery, setSearchQuery] = useState("");
-    const [value, setValue] = useState("По имени");
+    const [value, setValue] = useState(t("byTheName"));
     const pageSize = 5;
     const changeSelect = ({target}) => {
         setValue(target.value);
@@ -41,11 +43,11 @@ export const Followers = () => {
             const filteredUsers = searchQuery
                 ? data.filter(
                     (user) =>
-                        value === "По имени"
+                        value === t("byTheName")
                             ? user.name
                             .toLowerCase()
                             .indexOf(searchQuery.toLowerCase()) !== -1
-                            : value === "По телефону"
+                            : value === t("byPhone")
                                 ? user.telephone
                                 .toLowerCase()
                                 .indexOf(searchQuery.toLowerCase()) !== -1
@@ -63,13 +65,13 @@ export const Followers = () => {
         return (
             <div className={s.users}>
                 <div className={s.usersTitle}>
-                    <h2 className={s.h3}>Друзья</h2>
+                    <h2 className={s.h3}>{t("followers")}</h2>
                     <div>
-                        <input className={s.input} placeholder="Найти" onChange={handleSearchQuery} value={searchQuery}/>
+                        <input className={s.input} placeholder={t("search")} onChange={handleSearchQuery} value={searchQuery}/>
                         <select value={value}  className={s.select} onChange={changeSelect}>
-                            <option>По имени</option>
-                            <option>По телефону</option>
-                            <option>По месту жительства</option>
+                            <option>{t("byTheName")}</option>
+                            <option>{t("byPhone")}</option>
+                            <option>{t("atThePlaceOfResidence")}</option>
                         </select>
                     </div>
                 </div>
@@ -77,9 +79,9 @@ export const Followers = () => {
                     <Table className="table table-hover bg-white rounded-4">
                         <thead>
                         <tr className={"bg-light"}>
-                            <th scope="col" className={s.th} >Имя</th>
-                            <th scope="col" className={s.th} >Всего переводов</th>
-                            <th scope="col" className={s.th} >Место жительства</th>
+                            <th scope="col" className={s.th} >{t("name")}</th>
+                            <th scope="col" className={s.th} >{t("totalTransfers")}</th>
+                            <th scope="col" className={s.th} >{t("placeOfResidence")}</th>
                             <th scope="col"></th>
                             <th scope="col"></th>
                         </tr>
@@ -105,7 +107,7 @@ export const Followers = () => {
     } else {
         return (
             <div>
-                В данный момент у вас нет друзей
+                {t("youHaveNoFriendsAtTheMoment")}
             </div>
         )
     }

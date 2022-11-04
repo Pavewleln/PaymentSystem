@@ -1,4 +1,18 @@
 {
+  "isRequiredEmail": "Электронная почта обязательна для заполнения",
+  "isEmailEmail": "Email введен некорректно",
+  "isRequiredLocation":  "Место жительства обязательно для заполнения",
+  "isRequiredTelephone": "Телефон обязателен для заполнения",
+  "isRequiredDateOfBirth": "Дата рождения обязательна",
+  "isRequiredName": "Имя обязательно для заполнения",
+  "minName": "Имя должно состоять минимум из 3 символов",
+  "isRequiredPassword": "Пароль обязателен для заполнения",
+  "isCapitalSymbolPassword": "Пароль должен содержать хотя бы одну заглавную букву",
+  "isContainDigitPassword": "Пароль должен содержать хотя бы одну цифру",
+  "minPassword": "Пароль должен состоять минимум из 8 символов",
+  "isRequiredLicense": "Вы не можете использовать наш сервис без подтверждения лицензионного соглашения",
+
+  "loading": "Загрузка",
   "language": "Русский",
   "russian": "Русский",
   "english": "Английский",
@@ -75,15 +89,21 @@
   "block": "Заблокировать",
 
 
-  "dateOfBirth": "Date of Birth",
-  "phoneNumber": "Phone number",
-  "sex": "sex",
-  "description": "Description",
-  "signOut": "Sign out",
-  "male": "male",
-  "female": "female",
-  "other": "other",
+  "dateOfBirth": "Дата рождения",
+  "phoneNumber": "Номер телефона",
+  "sex": "Пол",
+  "description": "Описание",
+  "signOut": "Выйти из системы",
+  "male": "Мужчина",
+  "female": "Женщина",
+  "other": "Другое",
 
   "actionCompletedSuccessfully": "Действие успешно выполнено!",
-  "goBackToTheMainPage": "Вернуться на главную"
+  "goBackToTheMainPage": "Вернуться на главную",
+
+  "confirmProfileChange": "Подтвердить изменение профиля",
+  "update": "Обновить",
+  "password": "Пароль",
+  "email": "Электронная почта",
+  "remainInTheSystem": "Оставаться в системе"
 }

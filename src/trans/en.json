@@ -1,4 +1,18 @@
 {
+  "isRequiredEmail": "Email is required",
+  "isEmailEmail": "Email entered incorrectly",
+  "isRequiredLocation":  "Place of residence is required",
+  "isRequiredTelephone": "Phone is required",
+  "isRequiredDateOfBirth": "Date of birth is required",
+  "isRequiredName": "Name is required",
+  "minName": "Name must be at least 3 characters long",
+  "isRequiredPassword": "Password is required",
+  "isCapitalSymbolPassword": "Password must contain at least one capital letter",
+  "isContainDigitPassword": "Password must contain at least one number",
+  "minPassword": "Password must be at least 8 characters long",
+  "isRequiredLicense": "You may not use our service without confirming the license agreement",
+
+  "loading": "Loading",
   "language": "English",
   "russian": "Russian",
   "english": "English",
@@ -74,6 +88,21 @@
   "translate": "Translate",
   "block": "Block",
 
+  "dateOfBirth": "Date of Birth",
+  "phoneNumber": "Phone number",
+  "sex": "sex",
+  "description": "Description",
+  "signOut": "Sign out",
+  "male": "male",
+  "female": "female",
+  "other": "other",
+
   "actionCompletedSuccessfully": "Action completed successfully!",
-  "goBackToTheMainPage": "Go back to the main page"
+  "goBackToTheMainPage": "Go back to the main page",
+
+  "confirmProfileChange": "Confirm profile change",
+  "update": "Update",
+  "password": "Password",
+  "email": "Email",
+  "remainInTheSystem": "Remain in the system"
 }

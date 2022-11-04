@@ -27,27 +27,27 @@ export const LoginForm = () => {
     const validatorConfig = {
         email: {
             isRequired: {
-                message: "Электронная почта обязательна для заполнения"
+                message: t("isRequiredEmail")
             },
             isEmail: {
-                message: "Email введен некорректно"
+                message: t("isEmailEmail")
             }
         },
         password: {
             isRequired: {
-                message: "Пароль обязателен для заполнения"
+                message: t("isRequiredPassword")
             },
             isCapitalSymbol: {
-                message: "Пароль должен содержать хотя бы одну заглавную букву"
+                message: t("isCapitalSymbolPassword")
             },
             isContainDigit: {
-                message: "Пароль должен содержать хотя бы одну цифру"
+                message: t("isContainDigitPassword")
             },
             min: {
-                message: "Пароль должен состоять минимум из 8 символов",
+                message: t("minPassword"),
                 value: 8
             }
-        }
+        },
     };
     useEffect(() => {
         validate();
@@ -69,14 +69,14 @@ export const LoginForm = () => {
     return (
         <form onSubmit={handleSubmit}>
             <TextField
-                label="Электронная почта"
+                label={t("email")}
                 name="email"
                 value={data.email}
                 onChange={handleChange}
                 error={errors.email}
             />
             <TextField
-                label="Пароль"
+                label={t("password")}
                 type="password"
                 name="password"
                 value={data.password}
@@ -88,7 +88,7 @@ export const LoginForm = () => {
                 onChange={handleChange}
                 name="stayOn"
             >
-                Оставаться в системе
+                {t("remainInTheSystem")}
             </CheckBoxField>
             { loginError && <p className={"text-danger"}>{loginError}</p> }
             <button
@@ -96,7 +96,7 @@ export const LoginForm = () => {
                 type="submit"
                 disabled={!isValid}
             >
-                Войти
+                {t("toComeIn")}
             </button>
         </form>
     );

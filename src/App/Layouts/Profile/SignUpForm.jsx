@@ -6,8 +6,10 @@ import RadioField from "../../Common/form/radioField";
 import CheckBoxField from "../../Common/form/checkBoxField";
 import TextAreaField from "../../Common/form/textAreaField";
 import {signUp} from "../../Store/users";
+import {useTranslation} from "react-i18next";
 
 export const SignUpForm = () => {
+    const {t} = useTranslation();
     const dispatch = useDispatch();
     const [data, setData] = useState({
         email: "",
@@ -31,55 +33,55 @@ export const SignUpForm = () => {
     const validatorConfig = {
         email: {
             isRequired: {
-                message: "Электронная почта обязательна для заполнения"
+                message: t("isRequiredEmail")
             },
             isEmail: {
-                message: "Email введен некорректно"
+                message: t("isEmailEmail")
             }
         },
         location: {
             isRequired: {
-                message: "Место жительства обязательно для заполнения"
+                message: t("isRequiredLocation")
             }
         },
         telephone: {
             isRequired: {
-                message: "Телефон обязателен для заполнения"
+                message: t("isRequiredTelephone")
             }
         },
         dateOfBirth: {
             isRequired: {
-                message: "Дата рождения обязательна"
+                message: t("isRequiredDateOfBirth")
             }
         },
         name: {
             isRequired: {
-                message: "Имя обязательно для заполнения"
+                message: t("isRequiredName")
             },
             min: {
-                message: `Имя должно состоять минимум из 3 символов`,
+                message: t("minName"),
                 value: 3
             }
         },
         password: {
             isRequired: {
-                message: "Пароль обязателен для заполнения"
+                message: t("isRequiredPassword")
             },
             isCapitalSymbol: {
-                message: "Пароль должен содержать хотя бы одну заглавную букву"
+                message: t("isCapitalSymbolPassword")
             },
             isContainDigit: {
-                message: "Пароль должен содержать хотя бы одну цифру"
+                message: t("isContainDigitPassword")
             },
             min: {
-                message: "Пароль должен состоять минимум из 8 символов",
+                message: t("minPassword"),
                 value: 8
             }
         },
         licence: {
             isRequired: {
                 message:
-                    "Вы не можете использовать наш сервис без подтверждения лицензионного соглашения"
+                    t("isRequiredLicense")
             }
         }
     };
@@ -106,7 +108,7 @@ export const SignUpForm = () => {
     return (
         <form onSubmit={handleSubmit}>
             <TextField
-                label="Имя"
+                label={t("name")}
                 name="name"
                 value={data.name}
                 onChange={handleChange}
@@ -114,24 +116,24 @@ export const SignUpForm = () => {
                 placeholder={"Имя"}
             />
             <TextField
-                label="Электронная почта"
+                label={t("email")}
                 name="email"
                 value={data.email}
                 onChange={handleChange}
                 error={errors.email}
-                placeholder={"Почта"}
+                placeholder={t("email")}
             />
             <TextField
-                label="Пароль"
+                label={t("password")}
                 type="password"
                 name="password"
                 value={data.password}
                 onChange={handleChange}
                 error={errors.password}
-                placeholder={"Пароль"}
+                placeholder={t("password")}
             />
             <TextField
-                label="Дата рождения"
+                label={t("dateOfBirth")}
                 type="date"
                 name="dateOfBirth"
                 value={data.dateOfBirth}
@@ -140,7 +142,7 @@ export const SignUpForm = () => {
                 placeholder={"дд.мм.гггг"}
             />
             <TextField
-                label="Телефон"
+                label={t("phoneNumber")}
                 type="tel"
                 name="telephone"
                 value={data.telephone}
@@ -149,30 +151,30 @@ export const SignUpForm = () => {
                 placeholder={"+7 (___) __-__"}
             />
             <TextAreaField
-                label={"Место жительства"}
+                label={t("placeOfResidence")}
                 value={data.location}
                 error={errors.location}
                 onChange={handleChange}
                 name={"location"}
-                placeholder={"Место жительства"}
+                placeholder={t("placeOfResidence")}
             />
             <TextAreaField
-                label={"О себе"}
+                label={t("description")}
                 value={data.description}
                 onChange={handleChange}
                 name={"description"}
-                placeholder={"О себе"}
+                placeholder={t("description")}
             />
             <RadioField
                 options={[
-                    { name: "Мужчина", value: "male" },
-                    { name: "Женщина", value: "female" },
-                    { name: "Другое", value: "other" }
+                    {name: t("male"), value: "male"},
+                    {name: t("female"), value: "female"},
+                    {name: t("other"), value: "other"}
                 ]}
                 value={data.sex}
                 name="sex"
                 onChange={handleChange}
-                label="Выберите ваш пол"
+                label={t("sex")}
             />
             <CheckBoxField
                 value={data.licence}
@@ -180,14 +182,14 @@ export const SignUpForm = () => {
                 name="licence"
                 error={errors.licence}
             >
-                Подтвердить <a>лицензионное соглашение</a>
+                {t("confirmProfileChange")}
             </CheckBoxField>
             <button
                 className="btn btn-primary w-100 mx-auto"
                 type="submit"
                 disabled={!isValid}
             >
-                Зарегистрироваться
+                {t("register")}
             </button>
         </form>
     );

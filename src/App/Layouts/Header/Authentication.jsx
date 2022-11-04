@@ -8,8 +8,9 @@ import {getCreditCardsList} from "../../Store/myCreaditCard";
 import {useEffect} from "react";
 import s from './Header.module.scss'
 import {useTranslation} from "react-i18next";
+import {Button} from "react-bootstrap";
 
-export const Authentication = () => {
+export const Authentication = ({handleLanguageChange}) => {
     const {t} = useTranslation();
     const currentUser = useSelector(getCurrentUserData());
     const notice = useSelector(getNotice())
@@ -29,6 +30,7 @@ export const Authentication = () => {
                     <p className={s.date}>{t("date")} {date}</p>
                 </div>
                 <div className={s.authenticationRight}>
+                    <Button style={{marginRight: '20px'}} onClick={handleLanguageChange}>{t("language")}</Button>
                     <Link to={"/notice"} className={s.notice}>
                         <BsBell/>
                         {notice &&
@@ -53,6 +55,7 @@ export const Authentication = () => {
                     <p style={{fontSize: '14px'}}>{t("date")} {date}</p>
                 </div>
                 <div className={"d-flex"}>
+                    <Button style={{marginRight: '20px'}} onClick={handleLanguageChange}>{t("language")}</Button>
                     <div className={"d-flex align-items-center"}>
                         <Link to={"/profile"} className={"rounded-3 overflow-hidden"}
                               style={{width: '50px', height: '50px'}}>

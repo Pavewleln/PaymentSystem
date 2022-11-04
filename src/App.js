@@ -7,7 +7,6 @@ import {Users} from './App/Layouts/Followers-Users/Users';
 import {Followers} from "./App/Layouts/Followers-Users/Followers";
 import {Accounting} from "./App/Layouts/Accouting/Accounting";
 import {History} from "./App/Layouts/History/History";
-import {Settings} from "./App/Layouts/Settings/Settings";
 import {Profile} from "./App/Layouts/Profile/Profile";
 import {AppLoader} from "./App/Hoc/appLoader";
 import {ProtectedRoute} from "./App/Common/ProtectedRouter";
@@ -42,7 +41,6 @@ function App() {
                                 <Route path='/followers' element={<Followers/>}/>
                                 <Route path='/accounting' element={<Accounting/>}/>
                                 <Route path='/history' element={<History/>}/>
-                                <Route path='/settings' element={<Settings/>}/>
                                 <Route path='/notice' element={<Notice/>}/>
                                 <Route path='/logout' element={<Logout/>}/>
                                 <Route path='/translate/:cardId' element={<Translate/>}/>

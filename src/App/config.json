@@ -1,4 +1,4 @@
 {
-  "apiEndPoint": "https://bank-1a195-default-rtdb.europe-west1.firebasedatabase.app/",
+  "apiEndPoint": "https://paymentsystem-ec49f-default-rtdb.europe-west1.firebasedatabase.app/",
   "isFirebase": true
 }
